@@ -1,0 +1,16 @@
+# Serve static HTML homepage
+DirectoryIndex index.html index.php
+
+# Rewrite for static pages (add before WordPress rules)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# If index.html exists and is requested, serve it
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^index\.html$ - [L]
+
+# If a static HTML file exists, serve it
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+</IfModule>

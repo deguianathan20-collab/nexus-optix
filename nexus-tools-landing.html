@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Amazon Seller Tools | Nexus Brand Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nexus-navy: #0F2137;
+  --nexus-navy-deep: #00233F;
+  --nexus-green: #4CBA70;
+  --nexus-green-mid: #6BB884;
+  --nexus-green-light: #B3E7C4;
+  --nexus-blue: #275087;
+  --nexus-blue-mid: #497BBE;
+  --nexus-blue-light: #79ACF0;
+  --nexus-bg-light: #F5F7FA;
+  --nexus-text: #333333;
+  --nexus-text-soft: #4A4A4A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--nexus-text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ─────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--nexus-navy);
+  padding: 0 40px;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.nav-logo { height: 38px; width: auto; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,.85); text-decoration: none;
+  font-size: .85rem; font-weight: 700; letter-spacing: .5px;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--nexus-green-light); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--nexus-green), var(--nexus-blue-mid));
+  color: #fff !important; padding: 10px 24px; border-radius: 4px;
+  font-weight: 800; font-size: .8rem; letter-spacing: .5px;
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(76,186,112,.35); }
+
+/* ── HERO ────────────────────────────── */
+.hero {
+  margin-top: 72px;
+  min-height: calc(100vh - 72px);
+  background: var(--nexus-navy);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 80px 40px;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -40%; right: -10%; width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(76,186,112,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(73,123,190,.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1100px; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center; position: relative; z-index: 1;
+}
+.hero-text h1 {
+  font-size: 2.8rem; font-weight: 800; color: #fff;
+  line-height: 1.15; margin-bottom: 20px;
+}
+.hero-text h1 span {
+  background: linear-gradient(135deg, var(--nexus-green), var(--nexus-blue-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-text p {
+  color: rgba(255,255,255,.7); font-size: 1.05rem; line-height: 1.7;
+  margin-bottom: 32px; max-width: 480px;
+}
+.hero-badges {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.hero-badge {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.8); padding: 6px 16px; border-radius: 20px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .4px;
+}
+
+/* ── EMAIL GATE FORM ─────────────────── */
+.gate-card {
+  background: #fff; border-radius: 8px;
+  padding: 40px 36px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.3);
+  position: relative; overflow: hidden;
+}
+.gate-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--nexus-green), var(--nexus-blue-mid));
+}
+.gate-card h2 {
+  font-size: 1.35rem; font-weight: 800; color: var(--nexus-blue);
+  margin-bottom: 6px;
+}
+.gate-card .subtitle {
+  color: var(--nexus-text-soft); font-size: .88rem; margin-bottom: 28px;
+  line-height: 1.5;
+}
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block; font-size: .78rem; font-weight: 700;
+  color: var(--nexus-text); margin-bottom: 6px;
+  letter-spacing: .3px;
+}
+.form-group input, .form-group select {
+  width: 100%; padding: 12px 16px; border: 1.5px solid #dde2e8;
+  border-radius: 4px; font-family: 'Montserrat', Arial, sans-serif;
+  font-size: .9rem; color: var(--nexus-text);
+  transition: border-color .2s, box-shadow .2s;
+  background: #fff;
+}
+.form-group input:focus, .form-group select:focus {
+  outline: none; border-color: var(--nexus-blue-mid);
+  box-shadow: 0 0 0 3px rgba(73,123,190,.15);
+}
+.form-group input::placeholder { color: #b0b8c4; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.btn-submit {
+  width: 100%; padding: 14px; border: none; border-radius: 4px;
+  background: linear-gradient(135deg, var(--nexus-green), var(--nexus-blue-mid));
+  color: #fff; font-family: 'Montserrat', Arial, sans-serif;
+  font-size: .95rem; font-weight: 800; cursor: pointer;
+  letter-spacing: .5px; transition: transform .2s, box-shadow .2s;
+  margin-top: 8px;
+}
+.btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(76,186,112,.35);
+}
+.btn-submit:disabled {
+  opacity: .6; cursor: not-allowed; transform: none; box-shadow: none;
+}
+
+.form-note {
+  text-align: center; margin-top: 16px;
+  font-size: .72rem; color: #9aa3ae; line-height: 1.5;
+}
+.form-note svg { vertical-align: middle; margin-right: 4px; }
+
+.error-msg {
+  background: #FEF2F2; border: 1px solid #FECACA; color: #DC2626;
+  padding: 10px 14px; border-radius: 4px; font-size: .82rem;
+  margin-bottom: 16px; display: none; font-weight: 700;
+}
+.success-msg {
+  text-align: center; display: none;
+}
+.success-msg .check-circle {
+  width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--nexus-green), var(--nexus-green-mid));
+  display: flex; align-items: center; justify-content: center;
+}
+.success-msg h3 {
+  font-size: 1.2rem; font-weight: 800; color: var(--nexus-blue);
+  margin-bottom: 8px;
+}
+.success-msg p {
+  color: var(--nexus-text-soft); font-size: .88rem; line-height: 1.6;
+}
+
+/* ── TOOLS PREVIEW SECTION ───────────── */
+.tools-preview {
+  padding: 100px 40px;
+  background: var(--nexus-bg-light);
+}
+.section-header {
+  text-align: center; max-width: 600px; margin: 0 auto 60px;
+}
+.section-header .tag {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(76,186,112,.12), rgba(73,123,190,.12));
+  color: var(--nexus-blue); font-size: .75rem; font-weight: 800;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+  letter-spacing: .8px;
+}
+.section-header h2 {
+  font-size: 2rem; font-weight: 800; color: var(--nexus-navy);
+  margin-bottom: 12px;
+}
+.section-header p {
+  color: var(--nexus-text-soft); font-size: 1rem; line-height: 1.7;
+}
+
+.tools-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.tool-card {
+  background: #fff; border-radius: 8px; padding: 32px 28px;
+  box-shadow: 0 2px 8px rgba(15,33,55,.06);
+  border: 1px solid rgba(0,0,0,.04);
+  transition: transform .25s, box-shadow .25s;
+  position: relative; overflow: hidden;
+}
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(15,33,55,.1);
+}
+.tool-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--nexus-green), var(--nexus-blue-mid));
+  opacity: 0; transition: opacity .25s;
+}
+.tool-card:hover::after { opacity: 1; }
+
+.tool-icon {
+  width: 48px; height: 48px; border-radius: 10px; margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.tool-icon.green { background: linear-gradient(135deg, rgba(76,186,112,.15), rgba(107,184,132,.08)); }
+.tool-icon.blue { background: linear-gradient(135deg, rgba(39,80,135,.12), rgba(73,123,190,.08)); }
+
+.tool-card h3 {
+  font-size: 1rem; font-weight: 800; color: var(--nexus-navy);
+  margin-bottom: 8px;
+}
+.tool-card p {
+  font-size: .85rem; color: var(--nexus-text-soft); line-height: 1.6;
+  margin-bottom: 16px;
+}
+.tool-tag {
+  display: inline-block; font-size: .68rem; font-weight: 700;
+  padding: 4px 10px; border-radius: 12px; letter-spacing: .3px;
+}
+.tool-tag.advertising { background: rgba(76,186,112,.1); color: #2D8A4E; }
+.tool-tag.catalog { background: rgba(39,80,135,.1); color: var(--nexus-blue); }
+.tool-tag.analytics { background: rgba(121,172,240,.15); color: #3A6DB5; }
+
+/* ── HOW IT WORKS ────────────────────── */
+.how-it-works {
+  padding: 100px 40px;
+  background: #fff;
+}
+.steps-row {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  text-align: center;
+}
+.step-num {
+  width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 20px;
+  background: var(--nexus-navy);
+  color: #fff; font-weight: 800; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps-row h3 {
+  font-size: .95rem; font-weight: 800; color: var(--nexus-navy);
+  margin-bottom: 8px;
+}
+.steps-row p {
+  font-size: .85rem; color: var(--nexus-text-soft); line-height: 1.6;
+}
+
+/* ── CTA BANNER ──────────────────────── */
+.cta-banner {
+  background: var(--nexus-navy);
+  padding: 80px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--nexus-green), var(--nexus-blue-mid), var(--nexus-green));
+}
+.cta-banner h2 {
+  font-size: 2rem; font-weight: 800; color: #fff;
+  margin-bottom: 12px;
+}
+.cta-banner p {
+  color: rgba(255,255,255,.7); font-size: 1rem; margin-bottom: 32px;
+  max-width: 500px; margin-left: auto; margin-right: auto;
+}
+.cta-btn {
+  display: inline-block; padding: 16px 40px; border-radius: 4px;
+  background: linear-gradient(135deg, var(--nexus-green), var(--nexus-blue-mid));
+  color: #fff; text-decoration: none; font-weight: 800; font-size: .95rem;
+  letter-spacing: .5px; transition: transform .2s, box-shadow .2s;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(76,186,112,.3);
+}
+
+/* ── FOOTER ──────────────────────────── */
+footer {
+  background: var(--nexus-navy-deep);
+  padding: 48px 40px 32px;
+  text-align: center;
+}
+.footer-logo { height: 32px; margin-bottom: 20px; }
+footer p {
+  color: rgba(255,255,255,.4); font-size: .78rem;
+  line-height: 1.8;
+}
+footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+footer a:hover { color: var(--nexus-green-light); }
+
+/* ── RESPONSIVE ──────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-text p { margin-left: auto; margin-right: auto; }
+  .hero-badges { justify-content: center; }
+  .tools-grid { grid-template-columns: 1fr 1fr; }
+  .steps-row { grid-template-columns: 1fr; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 60px 20px; }
+  .hero-text h1 { font-size: 2rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .gate-card { padding: 28px 24px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══════════════════════════ -->
+<nav>
+  <svg viewBox="0 0 780 200" class="nav-logo" aria-label="Nexus Brand Group">
+    <defs>
+      <linearGradient id="ng1" x1="71.21" y1="99.06" x2="112.27" y2="171.44" gradientTransform="translate(0 202) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6bb884"/><stop offset="1" stop-color="#1c8d41"/></linearGradient>
+      <linearGradient id="ng2" x1="143.72" y1="113.47" x2="114.48" y2="163.75" gradientTransform="translate(0 202) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b3e7c4"/><stop offset="1" stop-color="#4cba70"/></linearGradient>
+      <linearGradient id="ng3" x1="3210.79" y1="-70.08" x2="3251.85" y2="2.3" gradientTransform="translate(3389.58 167.14) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#497bbe"/><stop offset="1" stop-color="#275087"/></linearGradient>
+      <linearGradient id="ng4" x1="3283.3" y1="-55.68" x2="3254.05" y2="-5.39" gradientTransform="translate(3389.58 167.14) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#79acf0"/><stop offset="1" stop-color="#4a7abb"/></linearGradient>
+    </defs>
+    <path fill="#fff" d="m320.74,63.62c6.9,6.67,10.35,16.57,10.35,29.68v51.9h-21.2v-49.19c0-7.91-1.87-13.88-5.6-17.89-3.73-4.01-9.05-6.02-15.94-6.02-7.8,0-13.97,2.35-18.49,7.04-4.52,4.69-6.78,11.45-6.78,20.27v45.79h-21.2V54.63h20.18v11.7c3.5-4.18,7.91-7.35,13.23-9.5,5.31-2.15,11.31-3.22,17.98-3.22,11.42,0,20.58,3.34,27.48,10.01Zm122.96,43.08h-71.07c1.24,6.67,4.5,11.96,9.75,15.86,5.26,3.9,11.79,5.85,19.59,5.85,9.95,0,18.15-3.28,24.59-9.84l11.36,13.06c-4.07,4.86-9.22,8.54-15.43,11.02-6.22,2.49-13.23,3.73-21.03,3.73-9.95,0-18.72-1.98-26.29-5.94-7.58-3.96-13.43-9.47-17.55-16.54-4.13-7.06-6.19-15.07-6.19-24,0-8.82,2.01-16.76,6.02-23.83,4.01-7.07,9.58-12.58,16.71-16.54,7.12-3.96,15.15-5.94,24.08-5.94,8.82,0,16.71,1.95,23.66,5.85,6.95,3.9,12.38,9.39,16.28,16.45,3.9,7.07,5.85,15.24,5.85,24.51,0,1.47-.11,3.56-.34,6.27Zm-62.67-30.1c-4.69,4.01-7.55,9.36-8.57,16.03h51.39c-.91-6.56-3.68-11.87-8.31-15.94-4.64-4.07-10.41-6.11-17.3-6.11-6.79,0-12.53,2.01-17.22,6.02Zm138.48,68.61l-23.24-31.38-23.41,31.38h-23.41l35.28-45.96-33.75-44.61h23.58l22.22,29.68,22.22-29.68h22.9l-33.92,44.27,35.45,46.3h-23.91Zm125.51-90.57v90.57h-20.18v-11.53c-3.39,4.07-7.63,7.21-12.72,9.41-5.09,2.2-10.57,3.31-16.45,3.31-12.1,0-21.63-3.36-28.58-10.09-6.95-6.73-10.43-16.71-10.43-29.94v-51.73h21.2v48.85c0,8.14,1.84,14.22,5.51,18.23,3.67,4.02,8.9,6.02,15.69,6.02,7.57,0,13.6-2.35,18.06-7.04,4.47-4.69,6.7-11.45,6.7-20.27v-45.79h21.2Zm34.26,88.87c-7.01-1.92-12.61-4.35-16.79-7.29l8.14-16.11c4.07,2.71,8.96,4.89,14.67,6.53,5.71,1.64,11.33,2.46,16.88,2.46,12.66,0,19-3.33,19-10.01,0-3.16-1.61-5.37-4.83-6.61-3.22-1.24-8.4-2.43-15.52-3.56-7.46-1.13-13.54-2.43-18.23-3.9-4.69-1.47-8.76-4.04-12.21-7.72-3.45-3.67-5.17-8.79-5.17-15.35,0-8.59,3.59-15.46,10.77-20.61,7.18-5.14,16.88-7.72,29.09-7.72,6.22,0,12.44.71,18.66,2.12,6.22,1.41,11.31,3.31,15.27,5.68l-8.14,16.11c-7.69-4.52-16.34-6.79-25.95-6.79-6.22,0-10.94.93-14.16,2.8-3.22,1.87-4.83,4.33-4.83,7.38,0,3.39,1.72,5.8,5.17,7.21,3.45,1.41,8.79,2.74,16.03,3.99,7.23,1.13,13.17,2.43,17.81,3.9,4.64,1.47,8.62,3.96,11.96,7.46,3.33,3.51,5,8.48,5,14.93,0,8.48-3.68,15.26-11.02,20.35-7.35,5.09-17.36,7.63-30.02,7.63-7.35,0-14.53-.96-21.54-2.88Z"/>
+    <path fill="url(#ng1)" d="m123.62,37.5l-53.28,92.29c-2.15,3.73-6.14,6.03-10.45,6.03h-20.56c-.93,0-1.51-1.01-1.04-1.81l53.98-93.49c1.08-1.87,3.07-3.02,5.22-3.02h26.12Z"/>
+    <path fill="url(#ng2)" d="m152.18,74.9l-20.9-36.2c-.43-.75-1.23-1.21-2.09-1.21h-31.69c3,0,4.55,1.94,5.06,2.74l32.38,56.08c1.39,2.41,4.87,2.41,6.27,0l10.97-19c.43-.75.43-1.67,0-2.41Z"/>
+    <path fill="url(#ng3)" d="m126.38,162.5l53.28-92.29c2.15-3.73,6.14-6.03,10.45-6.03h20.56c.93,0,1.51,1.01,1.04,1.81l-53.98,93.49c-1.08,1.87-3.07,3.02-5.22,3.02h-26.12Z"/>
+    <path fill="url(#ng4)" d="m97.82,125.1l20.9,36.2c.43.75,1.23,1.21,2.09,1.21h31.69c-3,0-4.55-1.94-5.06-2.74l-32.38-56.08c-1.39-2.41-4.87-2.41-6.27,0l-10.97,19c-.43.75-.43,1.67,0,2.41Z"/>
+  </svg>
+  <div class="nav-links">
+    <a href="#">Services</a>
+    <a href="#">About</a>
+    <a href="#">Case Studies</a>
+    <a href="#" class="nav-cta">GET A FREE AUDIT</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO + EMAIL GATE ═══════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Free <span>Amazon Seller Tools</span> Built by Experts</h1>
+      <p>Our team of former Amazonians built these interactive tools to help brands make smarter decisions on the marketplace. Enter your business email to get instant access.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">PPC CALCULATORS</span>
+        <span class="hero-badge">LISTING ANALYZERS</span>
+        <span class="hero-badge">MARGIN TOOLS</span>
+        <span class="hero-badge">KEYWORD RESEARCH</span>
+      </div>
+    </div>
+
+    <div class="gate-card">
+      <!-- Form State -->
+      <div id="formView">
+        <h2>Request Access</h2>
+        <p class="subtitle">Tools are available to brands and manufacturers. Enter your business email and we'll send you access within minutes.</p>
+        <div id="errorMsg" class="error-msg"></div>
+        <form id="gateForm" onsubmit="return handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>FIRST NAME</label>
+              <input type="text" id="firstName" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label>LAST NAME</label>
+              <input type="text" id="lastName" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>BUSINESS EMAIL</label>
+            <input type="email" id="email" placeholder="jane@yourbrand.com" required>
+          </div>
+          <div class="form-group">
+            <label>COMPANY NAME</label>
+            <input type="text" id="company" placeholder="Your Brand Inc." required>
+          </div>
+          <div class="form-group">
+            <label>ANNUAL AMAZON REVENUE (APPROX.)</label>
+            <select id="revenue" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>Under $500K</option>
+              <option>$500K – $1M</option>
+              <option>$1M – $5M</option>
+              <option>$5M – $20M</option>
+              <option>$20M+</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">REQUEST ACCESS</button>
+          <p class="form-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9aa3ae" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            We respect your privacy. No spam, ever. Only available to brand owners and manufacturers.
+          </p>
+        </form>
+      </div>
+
+      <!-- Success State -->
+      <div id="successView" class="success-msg">
+        <div class="check-circle">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Check Your Inbox!</h3>
+        <p>We've sent an email to <strong id="confirmEmail"></strong> with your access credentials. It should arrive within a few minutes.</p>
+        <p style="margin-top: 16px; font-size: .8rem; color: #9aa3ae;">Don't see it? Check your spam folder or contact us at tools@nexusbrandgroup.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TOOL PREVIEWS ══════════════════════════ -->
+<section class="tools-preview">
+  <div class="section-header">
+    <span class="tag">WHAT'S INSIDE</span>
+    <h2>Tools That Drive Real Results</h2>
+    <p>Each tool was designed from real client needs — the same frameworks we use to manage millions in ad spend and grow brands on Amazon.</p>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon green">📊</div>
+      <h3>ACoS & TACoS Calculator</h3>
+      <p>Model your advertising efficiency at the campaign and account level. Visualize breakeven points and optimize spend allocation.</p>
+      <span class="tool-tag advertising">ADVERTISING</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon blue">🔍</div>
+      <h3>Listing Quality Scorer</h3>
+      <p>Analyze your product listings against Amazon's A10 algorithm factors. Get an actionable checklist to improve visibility.</p>
+      <span class="tool-tag catalog">CATALOG</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon green">💰</div>
+      <h3>Profit Margin Analyzer</h3>
+      <p>Factor in FBA fees, advertising costs, COGS, and returns to see your true per-unit profitability across your catalog.</p>
+      <span class="tool-tag analytics">ANALYTICS</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon blue">🎯</div>
+      <h3>Keyword Bid Optimizer</h3>
+      <p>Input your target ACoS, conversion rate, and ASP to calculate optimal keyword bids for Sponsored Products campaigns.</p>
+      <span class="tool-tag advertising">ADVERTISING</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon green">📈</div>
+      <h3>Share of Voice Tracker</h3>
+      <p>Benchmark your brand's search presence against competitors for your top keywords. Identify gaps and opportunities.</p>
+      <span class="tool-tag analytics">ANALYTICS</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon blue">🏷️</div>
+      <h3>FBA Fee Calculator</h3>
+      <p>Estimate your Fulfillment by Amazon fees based on product dimensions, weight, and category. Plan pricing with confidence.</p>
+      <span class="tool-tag catalog">CATALOG</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══════════════════════════ -->
+<section class="how-it-works">
+  <div class="section-header">
+    <span class="tag">HOW IT WORKS</span>
+    <h2>Access in 3 Simple Steps</h2>
+  </div>
+  <div class="steps-row">
+    <div>
+      <div class="step-num">1</div>
+      <h3>Submit Your Info</h3>
+      <p>Enter your business email and company details. We verify you're a brand or manufacturer — no agencies or competitors.</p>
+    </div>
+    <div>
+      <div class="step-num">2</div>
+      <h3>Get Your Credentials</h3>
+      <p>Within minutes, you'll receive an email with a password to access the full tool library.</p>
+    </div>
+    <div>
+      <div class="step-num">3</div>
+      <h3>Start Optimizing</h3>
+      <p>Use the tools anytime to make data-driven decisions about your Amazon business. New tools added regularly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═════════════════════════════ -->
+<section class="cta-banner">
+  <h2>Ready to Level Up Your Amazon Business?</h2>
+  <p>These free tools are just the beginning. See what a dedicated team of Amazon experts can do for your brand.</p>
+  <a href="https://www.nexusbrandgroup.com" class="cta-btn">SCHEDULE A FREE CONSULTATION</a>
+</section>
+
+<!-- ═══ FOOTER ═════════════════════════════════ -->
+<footer>
+  <svg viewBox="0 0 780 200" class="footer-logo" aria-label="Nexus Brand Group">
+    <defs>
+      <linearGradient id="fg1" x1="71.21" y1="99.06" x2="112.27" y2="171.44" gradientTransform="translate(0 202) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6bb884"/><stop offset="1" stop-color="#1c8d41"/></linearGradient>
+      <linearGradient id="fg2" x1="143.72" y1="113.47" x2="114.48" y2="163.75" gradientTransform="translate(0 202) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b3e7c4"/><stop offset="1" stop-color="#4cba70"/></linearGradient>
+      <linearGradient id="fg3" x1="3210.79" y1="-70.08" x2="3251.85" y2="2.3" gradientTransform="translate(3389.58 167.14) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#497bbe"/><stop offset="1" stop-color="#275087"/></linearGradient>
+      <linearGradient id="fg4" x1="3283.3" y1="-55.68" x2="3254.05" y2="-5.39" gradientTransform="translate(3389.58 167.14) rotate(-180) scale(1 -1)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#79acf0"/><stop offset="1" stop-color="#4a7abb"/></linearGradient>
+    </defs>
+    <path fill="#fff" d="m320.74,63.62c6.9,6.67,10.35,16.57,10.35,29.68v51.9h-21.2v-49.19c0-7.91-1.87-13.88-5.6-17.89-3.73-4.01-9.05-6.02-15.94-6.02-7.8,0-13.97,2.35-18.49,7.04-4.52,4.69-6.78,11.45-6.78,20.27v45.79h-21.2V54.63h20.18v11.7c3.5-4.18,7.91-7.35,13.23-9.5,5.31-2.15,11.31-3.22,17.98-3.22,11.42,0,20.58,3.34,27.48,10.01Zm122.96,43.08h-71.07c1.24,6.67,4.5,11.96,9.75,15.86,5.26,3.9,11.79,5.85,19.59,5.85,9.95,0,18.15-3.28,24.59-9.84l11.36,13.06c-4.07,4.86-9.22,8.54-15.43,11.02-6.22,2.49-13.23,3.73-21.03,3.73-9.95,0-18.72-1.98-26.29-5.94-7.58-3.96-13.43-9.47-17.55-16.54-4.13-7.06-6.19-15.07-6.19-24,0-8.82,2.01-16.76,6.02-23.83,4.01-7.07,9.58-12.58,16.71-16.54,7.12-3.96,15.15-5.94,24.08-5.94,8.82,0,16.71,1.95,23.66,5.85,6.95,3.9,12.38,9.39,16.28,16.45,3.9,7.07,5.85,15.24,5.85,24.51,0,1.47-.11,3.56-.34,6.27Zm-62.67-30.1c-4.69,4.01-7.55,9.36-8.57,16.03h51.39c-.91-6.56-3.68-11.87-8.31-15.94-4.64-4.07-10.41-6.11-17.3-6.11-6.79,0-12.53,2.01-17.22,6.02Zm138.48,68.61l-23.24-31.38-23.41,31.38h-23.41l35.28-45.96-33.75-44.61h23.58l22.22,29.68,22.22-29.68h22.9l-33.92,44.27,35.45,46.3h-23.91Zm125.51-90.57v90.57h-20.18v-11.53c-3.39,4.07-7.63,7.21-12.72,9.41-5.09,2.2-10.57,3.31-16.45,3.31-12.1,0-21.63-3.36-28.58-10.09-6.95-6.73-10.43-16.71-10.43-29.94v-51.73h21.2v48.85c0,8.14,1.84,14.22,5.51,18.23,3.67,4.02,8.9,6.02,15.69,6.02,7.57,0,13.6-2.35,18.06-7.04,4.47-4.69,6.7-11.45,6.7-20.27v-45.79h21.2Zm34.26,88.87c-7.01-1.92-12.61-4.35-16.79-7.29l8.14-16.11c4.07,2.71,8.96,4.89,14.67,6.53,5.71,1.64,11.33,2.46,16.88,2.46,12.66,0,19-3.33,19-10.01,0-3.16-1.61-5.37-4.83-6.61-3.22-1.24-8.4-2.43-15.52-3.56-7.46-1.13-13.54-2.43-18.23-3.9-4.69-1.47-8.76-4.04-12.21-7.72-3.45-3.67-5.17-8.79-5.17-15.35,0-8.59,3.59-15.46,10.77-20.61,7.18-5.14,16.88-7.72,29.09-7.72,6.22,0,12.44.71,18.66,2.12,6.22,1.41,11.31,3.31,15.27,5.68l-8.14,16.11c-7.69-4.52-16.34-6.79-25.95-6.79-6.22,0-10.94.93-14.16,2.8-3.22,1.87-4.83,4.33-4.83,7.38,0,3.39,1.72,5.8,5.17,7.21,3.45,1.41,8.79,2.74,16.03,3.99,7.23,1.13,13.17,2.43,17.81,3.9,4.64,1.47,8.62,3.96,11.96,7.46,3.33,3.51,5,8.48,5,14.93,0,8.48-3.68,15.26-11.02,20.35-7.35,5.09-17.36,7.63-30.02,7.63-7.35,0-14.53-.96-21.54-2.88Z"/>
+    <path fill="url(#fg1)" d="m123.62,37.5l-53.28,92.29c-2.15,3.73-6.14,6.03-10.45,6.03h-20.56c-.93,0-1.51-1.01-1.04-1.81l53.98-93.49c1.08-1.87,3.07-3.02,5.22-3.02h26.12Z"/>
+    <path fill="url(#fg2)" d="m152.18,74.9l-20.9-36.2c-.43-.75-1.23-1.21-2.09-1.21h-31.69c3,0,4.55,1.94,5.06,2.74l32.38,56.08c1.39,2.41,4.87,2.41,6.27,0l10.97-19c.43-.75.43-1.67,0-2.41Z"/>
+    <path fill="url(#fg3)" d="m126.38,162.5l53.28-92.29c2.15-3.73,6.14-6.03,10.45-6.03h20.56c.93,0,1.51,1.01,1.04,1.81l-53.98,93.49c-1.08,1.87-3.07,3.02-5.22,3.02h-26.12Z"/>
+    <path fill="url(#fg4)" d="m97.82,125.1l20.9,36.2c.43.75,1.23,1.21,2.09,1.21h31.69c-3,0-4.55-1.94-5.06-2.74l-32.38-56.08c-1.39-2.41-4.87-2.41-6.27,0l-10.97,19c-.43.75-.43,1.67,0,2.41Z"/>
+  </svg>
+  <p>&copy; 2026 Nexus Brand Group. All rights reserved.</p>
+  <p style="margin-top: 8px;"><a href="https://www.nexusbrandgroup.com">nexusbrandgroup.com</a></p>
+</footer>
+
+<!-- ═══ DOMAIN VALIDATION & FORM LOGIC ═══════════ -->
+<script>
+// ── Blocked email domains (free providers, disposable, competitor, etc.) ──
+const BLOCKED_DOMAINS = [
+  // Free providers
+  'gmail.com','yahoo.com','yahoo.co.uk','hotmail.com','outlook.com','aol.com',
+  'icloud.com','mail.com','protonmail.com','proton.me','zoho.com','yandex.com',
+  'gmx.com','gmx.net','live.com','msn.com','me.com','mac.com','inbox.com',
+  'fastmail.com','tutanota.com','hushmail.com','mailfence.com','disroot.org',
+  'riseup.net','posteo.de','cock.li','guerrillamail.com','mailinator.com',
+  'tempmail.com','throwaway.email','sharklasers.com','guerrillamail.info',
+  'grr.la','guerrillamail.net','guerrillamail.org','guerrillamail.de',
+  'yopmail.com','trashmail.com','10minutemail.com','temp-mail.org',
+  // Add your competitor domains below:
+  // 'competitora.com',
+  // 'competitorb.com',
+];
+
+// ── Additional suspicious patterns ──
+function isSuspiciousDomain(domain) {
+  // Block domains that look disposable or temporary
+  const suspiciousPatterns = [
+    /temp/i, /trash/i, /throw/i, /disposable/i, /fake/i,
+    /spam/i, /guerrilla/i, /mailinator/i, /yopmail/i,
+    /sharklaser/i, /grr\./i, /10minute/i
+  ];
+  return suspiciousPatterns.some(p => p.test(domain));
+}
+
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return { valid: false, reason: 'Please enter a valid email address.' };
+  }
+
+  const domain = email.split('@')[1].toLowerCase();
+
+  if (BLOCKED_DOMAINS.includes(domain)) {
+    return {
+      valid: false,
+      reason: 'Please use your business email address. Free email providers (Gmail, Yahoo, etc.) are not accepted.'
+    };
+  }
+
+  if (isSuspiciousDomain(domain)) {
+    return {
+      valid: false,
+      reason: 'This email domain is not accepted. Please use your company email.'
+    };
+  }
+
+  return { valid: true };
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const errorDiv = document.getElementById('errorMsg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Validate domain
+  const validation = validateEmail(email);
+  if (!validation.valid) {
+    errorDiv.textContent = validation.reason;
+    errorDiv.style.display = 'block';
+    return false;
+  }
+
+  // Hide error, show loading
+  errorDiv.style.display = 'none';
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'VERIFYING...';
+
+  // ── INTEGRATION POINT ──
+  // Replace this timeout with your actual backend call.
+  // Options:
+  //   1. WordPress form plugin (WPForms / Gravity Forms) — submit via AJAX
+  //   2. Zapier webhook — POST to your Zap URL
+  //   3. Mailchimp / ActiveCampaign API — add subscriber + trigger automation
+  //   4. Custom PHP endpoint on your Bluehost server
+  //
+  // The backend should:
+  //   a. Store the lead in your CRM / email list
+  //   b. Send an email with the portal password
+  //   c. Return success/failure
+
+  setTimeout(() => {
+    // Show success state
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('successView').style.display = 'block';
+    document.getElementById('confirmEmail').textContent = email;
+  }, 1500);
+
+  return false;
+}
+</script>
+
+</body>
+</html>
