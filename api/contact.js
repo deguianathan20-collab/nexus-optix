@@ -87,6 +87,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('Mail send failed:', err.message);
-    return res.status(500).json({ success: false, error: 'Mail delivery failed' });
+    return res.status(500).json({ success: false, error: 'Mail delivery failed', detail: err.message });
   }
 };
