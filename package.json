@@ -1,0 +1,12 @@
+{
+  "name": "nexus-brand-group-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nexus Brand Group marketing site — static HTML + Vercel serverless contact form",
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

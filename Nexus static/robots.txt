@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /nexus-tools-portal
+Disallow: /nexus-contact-confirmation
+Disallow: /thank-you
+
+Sitemap: https://nexusbrandgroup.com/sitemap.xml

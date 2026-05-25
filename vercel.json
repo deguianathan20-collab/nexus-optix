@@ -2,7 +2,26 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "outputDirectory": "Nexus static",
   "redirects": [
+    { "source": "/about", "destination": "/nexus-about", "permanent": true },
+    { "source": "/contact", "destination": "/nexus-contact", "permanent": true },
+    { "source": "/contact-confirmation", "destination": "/nexus-contact-confirmation", "permanent": true },
+    { "source": "/confirmation", "destination": "/nexus-contact-confirmation", "permanent": true },
+    { "source": "/optix", "destination": "/nexus-optix", "permanent": true },
+    { "source": "/results", "destination": "/nexus-results", "permanent": true },
+    { "source": "/services", "destination": "/nexus-services", "permanent": true },
+    { "source": "/services-amazon", "destination": "/nexus-services-amazon", "permanent": true },
+    { "source": "/services-walmart", "destination": "/nexus-services-walmart", "permanent": true },
+    { "source": "/services-target", "destination": "/nexus-services-target", "permanent": true },
+    { "source": "/services-tiktok", "destination": "/nexus-services-tiktok", "permanent": true },
+    { "source": "/services-other", "destination": "/nexus-services-other", "permanent": true },
+    { "source": "/blog", "destination": "/nexus-insights-blog", "permanent": true },
+    { "source": "/white-papers", "destination": "/nexus-insights-whitepaper", "permanent": true },
+    { "source": "/tools", "destination": "/nexus-tools-portal", "permanent": true },
+    { "source": "/brand-tools", "destination": "/nexus-tools-landing", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/nexus-privacy-policy", "permanent": true },
+    { "source": "/terms-of-service", "destination": "/nexus-terms-of-service", "permanent": true },
     {
       "source": "/:path((?!.*\\.(?!html$))[^/]+)\\.html",
       "destination": "/:path",
@@ -11,11 +30,15 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/(.*)\\.html",
       "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
-        { "key": "Pragma", "value": "no-cache" },
-        { "key": "Expires", "value": "0" }
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
       ]
     }
   ]
