@@ -28,8 +28,10 @@ In the Vercel dashboard → your project → **Settings → Environment Variable
 |------|-------|
 | `SMTP_USER` | `hello@nexusbrandgroup.com` |
 | `SMTP_PASS` | *(the Google App Password — see note below)* |
-| `MAIL_TO` | `hello@nexusbrandgroup.com` |
+| `MAIL_TO` | `deguianathan20@gmail.com` &nbsp; ⚠️ **TEMPORARY — flip back to `hello@nexusbrandgroup.com` before launch** |
 | `MAIL_FROM` | `hello@nexusbrandgroup.com` |
+
+> Why `MAIL_TO` is temporarily redirected: routes test submissions to a dev inbox while you preview-deploy and verify, so the real business inbox doesn't get test data. `SMTP_USER`/`SMTP_PASS`/`MAIL_FROM` stay on the Workspace account — those are what authenticates with Gmail SMTP and what the recipient sees as the From address. Only the delivery destination changes.
 
 > The current App Password value lives in the deleted `send-contact.php` in git history. To get it: `git show <earliest-commit>:send-contact.php | findstr SMTP_PASS` — copy the 16-char value (spaces are fine).
 >
@@ -68,6 +70,14 @@ MAIL_FROM=hello@nexusbrandgroup.com
 - [ ] Submit form with `email=not-an-email` → response shows 400 "Invalid email address"
 - [ ] Click every nav link on every page → no 404s
 - [ ] `/contact-form-shows.html` redirects to `/contact-form-shows` (cleanUrls redirect works)
+
+## Pre-launch checklist (do these BEFORE pointing the real domain)
+
+- [ ] In Vercel env vars, change `MAIL_TO` from `deguianathan20@gmail.com` (temp dev inbox) → `hello@nexusbrandgroup.com`.
+- [ ] Trigger a redeploy after the env var change (env var edits don't auto-redeploy).
+- [ ] Submit one real test form on the production URL → confirm it lands in `hello@nexusbrandgroup.com`, not your personal inbox.
+- [ ] Fill in `[DATE]`, `[STATE]`, `[COUNTY/STATE]` placeholders in `nexus-privacy-policy.html` and `nexus-terms-of-service.html`.
+- [ ] (Recommended) have a lawyer review the legal stubs.
 
 ## Domain cutover (when client grants DNS access)
 
