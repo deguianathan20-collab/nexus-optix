@@ -191,6 +191,19 @@
     font-size: 0.9rem; color: var(--text-body); margin-bottom: 32px;
   }
 
+  .optix-frame {
+    width: 100%;
+    min-height: 520px;
+    height: 60vh;
+    max-height: 720px;
+    border: 0;
+    border-radius: 8px;
+    background: #fff;
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .optix-frame { min-height: 480px; height: 70vh; }
+  }
   .login-form { text-align: left; }
   .login-group {
     margin-bottom: 20px;
@@ -926,26 +939,16 @@ section {
     <h1 class="login-title">Welcome Back</h1>
     <p class="login-subtitle">Sign in to access your marketplace analytics dashboard.</p>
 
-    <form class="login-form" method="post" onsubmit="handleLogin(event)">
-      <div class="login-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="you@company.com" required>
-      </div>
-      <div class="login-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" required>
-      </div>
-      <div class="login-forgot">
-        <a href="#" onclick="alert('Account creation is by invitation only. Please contact hello@nexusbrandgroup.com.'); return false;" onclick="alert('Please contact support at hello@nexusbrandgroup.com for password assistance.'); return false;">Forgot password?</a>
-      </div>
-      <button type="submit" class="login-btn">Sign In</button>
-    </form>
+    <iframe
+      src="https://nexusbrand-97103.bubbleapps.io/"
+      class="optix-frame"
+      title="Optix sign-in"
+      loading="lazy"
+      allow="clipboard-read; clipboard-write"
+      referrerpolicy="origin"></iframe>
 
-    <div class="login-divider"><span>or</span></div>
-
-    <div class="login-links">
-      <a href="#" class="login-create" onclick="alert('Account creation is by invitation only. Please contact hello@nexusbrandgroup.com.'); return false;">Create an Account</a>
-      <a href="nexus-contact.html" class="login-learn">Learn More &#8594;</a>
+    <div class="login-links" style="margin-top: 20px;">
+      <a href="nexus-contact.html" class="login-learn">New here? Learn more about Optix &#8594;</a>
     </div>
   </div>
 </div>
@@ -966,52 +969,7 @@ section {
     else { nav.classList.remove('scrolled'); }
   });
 
-  const BUBBLE_BASE = 'https://nexusbrand-97103.bubbleapps.io';
-
-  async function handleLogin(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('.login-btn');
-    const originalText = btn.textContent;
-    btn.textContent = 'Signing in...';
-    btn.disabled = true;
-    form.querySelectorAll('input').forEach(el => el.disabled = true);
-
-    try {
-      const r = await fetch(`${BUBBLE_BASE}/api/1.1/wf/login`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: form.email.value.trim(),
-          password: form.password.value
-        })
-      });
-
-      if (!r.ok) {
-        const errBody = await r.text();
-        console.error('Bubble login non-OK response:', r.status, errBody);
-        throw new Error(r.status === 400 ? 'Invalid email or password.' : 'Sign-in service is unavailable. Please try again.');
-      }
-
-      const json = await r.json();
-      console.debug('Bubble login response:', json);
-      const response = json.response || json;
-      if (!response || !response.token) {
-        throw new Error('Unexpected response from sign-in service.');
-      }
-
-      sessionStorage.setItem('nexus_token', response.token);
-      sessionStorage.setItem('nexus_user', response.user_id || '');
-      window.location.href = `${BUBBLE_BASE}/?token=${encodeURIComponent(response.token)}`;
-    } catch (err) {
-      console.error('Login failed:', err);
-      alert(err.message || 'Sign in failed. Check your email and password, or contact hello@nexusbrandgroup.com.');
-      btn.textContent = originalText;
-      btn.disabled = false;
-      form.querySelectorAll('input').forEach(el => el.disabled = false);
-    }
-  }
+  /* Auth is delegated to Bubble via the iframe; no JS needed here. */
 </script>
 
 
