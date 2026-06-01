@@ -111,8 +111,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.nx a { color: var(--nx-blue); text-decoration: none; transition: var(--nx-transition); }
-.nx a:hover { color: var(--nx-green); }
+.nx a:not(.nx-btn) { color: var(--nx-blue); text-decoration: none; transition: var(--nx-transition); }
+.nx a:not(.nx-btn):hover { color: var(--nx-green); }
 
 /* =========================================================================
    LAYOUT
