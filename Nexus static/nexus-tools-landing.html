@@ -550,7 +550,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <path fill="url(#fg3)" d="m126.38,162.5l53.28-92.29c2.15-3.73,6.14-6.03,10.45-6.03h20.56c.93,0,1.51,1.01,1.04,1.81l-53.98,93.49c-1.08,1.87-3.07,3.02-5.22,3.02h-26.12Z"/>
     <path fill="url(#fg4)" d="m97.82,125.1l20.9,36.2c.43.75,1.23,1.21,2.09,1.21h31.69c-3,0-4.55-1.94-5.06-2.74l-32.38-56.08c-1.39-2.41-4.87-2.41-6.27,0l-10.97,19c-.43.75-.43,1.67,0,2.41Z"/>
   </svg>
-  <p>&copy; 2026 Nexus Brand Group. All rights reserved.</p>
+  <p>&copy; <span class="js-year">2026</span> Nexus Brand Group. All rights reserved.</p>
   <p style="margin-top: 8px;"><a href="https://www.nexusbrandgroup.com">nexusbrandgroup.com</a></p>
 </footer>
 
@@ -653,5 +653,8 @@ function handleSubmit(e) {
 }
 </script>
 
+
+<!-- Auto-update copyright year -->
+<script>document.querySelectorAll('.js-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

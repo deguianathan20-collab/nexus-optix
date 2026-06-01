@@ -532,7 +532,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ═══ FOOTER ═══════════════════════════════ -->
 <footer>
-  <p>&copy; 2026 Nexus Brand Group. All rights reserved.</p>
+  <p>&copy; <span class="js-year">2026</span> Nexus Brand Group. All rights reserved.</p>
   <p style="margin-top: 8px;"><a href="https://www.nexusbrandgroup.com">nexusbrandgroup.com</a> &nbsp;|&nbsp; <a href="mailto:tools@nexusbrandgroup.com">tools@nexusbrandgroup.com</a></p>
 </footer>
 
@@ -564,5 +564,8 @@ function filterTools() {
 }
 </script>
 
+
+<!-- Auto-update copyright year -->
+<script>document.querySelectorAll('.js-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>

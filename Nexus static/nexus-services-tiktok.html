@@ -1334,7 +1334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2026 Nexus Brand Group. All rights reserved.</span>
+    <span>&copy; <span class="js-year">2026</span> Nexus Brand Group. All rights reserved.</span>
     <span>Premium Marketplace Agency Services</span>
   </div>
 </footer>
@@ -1438,5 +1438,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- VERSION: v5.3-2026-03-12 -->
 <div id="nexus-version-tag" style="position:fixed;bottom:4px;left:4px;background:rgba(0,0,0,0.6);color:#4CBA70;font-family:monospace;font-size:10px;padding:2px 6px;border-radius:3px;z-index:99999;pointer-events:none;">v5.3-2026-03-12</div>
+
+<!-- Auto-update copyright year -->
+<script>document.querySelectorAll('.js-year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
 </body>
 </html>
