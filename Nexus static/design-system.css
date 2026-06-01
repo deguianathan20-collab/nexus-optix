@@ -1,0 +1,357 @@
+/*
+ * Nexus Brand Group — Design System v1
+ * ------------------------------------------------
+ * Tokens and component classes for new pages.
+ * Link this file with: <link rel="stylesheet" href="/design-system.css">
+ *
+ * All custom properties and classes are prefixed `nx-` to avoid collisions
+ * with existing per-page inline CSS. Safe to add to existing pages too.
+ *
+ * Reference page: /design-system  (design-system.html)
+ */
+
+/* =========================================================================
+   TOKENS
+   ========================================================================= */
+:root {
+  /* Brand palette */
+  --nx-navy:        #0F2137;
+  --nx-navy-deep:   #00233F;
+  --nx-blue:        #275087;
+  --nx-blue-mid:    #497BBE;
+  --nx-blue-light:  #79ACF0;
+  --nx-green:       #4CBA70;
+  --nx-green-mid:   #6BB884;
+  --nx-green-light: #B3E7C4;
+
+  /* Neutrals */
+  --nx-text:        #1F2937;
+  --nx-text-soft:   #4B5563;
+  --nx-text-muted:  #9aa3ae;
+  --nx-bg:          #FFFFFF;
+  --nx-bg-soft:     #F5F7FA;
+  --nx-border:      #E5E7EB;
+  --nx-border-soft: #f0f2f5;
+  --nx-white:       #ffffff;
+
+  /* Marketplace accents (use only on marketplace-specific UI) */
+  --nx-amazon:        #FF9900;
+  --nx-walmart:       #0071DC;
+  --nx-target:        #CC0000;
+  --nx-tiktok:        #000000;
+  --nx-tiktok-accent: #EE1D52;
+
+  /* Signature gradients */
+  --nx-gradient-brand:    linear-gradient(135deg, var(--nx-green), var(--nx-blue-mid));
+  --nx-gradient-brand-90: linear-gradient(90deg,  var(--nx-green), var(--nx-blue-mid));
+  --nx-gradient-dark:     linear-gradient(160deg, var(--nx-navy-deep), var(--nx-navy));
+  --nx-gradient-light:    linear-gradient(135deg, var(--nx-green-light), var(--nx-blue-light));
+
+  /* Typography */
+  --nx-font:        'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --nx-text-xs:     0.75rem;    /* 12px */
+  --nx-text-sm:     0.875rem;   /* 14px */
+  --nx-text-base:   1rem;       /* 16px */
+  --nx-text-lg:     1.125rem;   /* 18px */
+  --nx-text-xl:     1.5rem;     /* 24px */
+  --nx-text-2xl:    2rem;       /* 32px */
+  --nx-text-3xl:    2.75rem;    /* 44px */
+  --nx-text-4xl:    3.5rem;     /* 56px */
+
+  /* Spacing — 4px base scale */
+  --nx-space-1:  4px;
+  --nx-space-2:  8px;
+  --nx-space-3:  12px;
+  --nx-space-4:  16px;
+  --nx-space-5:  24px;
+  --nx-space-6:  32px;
+  --nx-space-7:  48px;
+  --nx-space-8:  64px;
+  --nx-space-9:  96px;
+  --nx-space-10: 128px;
+
+  /* Radius */
+  --nx-radius-sm:   4px;
+  --nx-radius:      8px;
+  --nx-radius-lg:   12px;
+  --nx-radius-xl:   20px;
+  --nx-radius-pill: 999px;
+
+  /* Shadows */
+  --nx-shadow-sm:       0 2px 8px rgba(15, 33, 55, 0.06);
+  --nx-shadow:          0 4px 20px rgba(15, 33, 55, 0.10);
+  --nx-shadow-lg:       0 8px 40px rgba(0, 0, 0, 0.15);
+  --nx-shadow-elevated: 0 12px 48px rgba(15, 33, 55, 0.20);
+  --nx-shadow-glow:     0 6px 20px rgba(76, 186, 112, 0.35);
+
+  /* Layout */
+  --nx-container-max:    1200px;
+  --nx-container-narrow: 800px;
+  --nx-section-y:        96px;
+  --nx-section-y-sm:     56px;
+
+  /* Motion */
+  --nx-transition:       all 0.2s ease;
+  --nx-transition-slow:  all 0.3s ease;
+}
+
+/* =========================================================================
+   RESET + BASE — opt in by adding `.nx` to <body> on new pages
+   ========================================================================= */
+.nx, .nx * { box-sizing: border-box; }
+.nx {
+  margin: 0; padding: 0;
+  font-family: var(--nx-font);
+  font-size: var(--nx-text-base);
+  color: var(--nx-text);
+  line-height: 1.6;
+  background: var(--nx-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.nx a { color: var(--nx-blue); text-decoration: none; transition: var(--nx-transition); }
+.nx a:hover { color: var(--nx-green); }
+
+/* =========================================================================
+   LAYOUT
+   ========================================================================= */
+.nx-container        { max-width: var(--nx-container-max);    margin: 0 auto; padding: 0 var(--nx-space-5); }
+.nx-container--narrow{ max-width: var(--nx-container-narrow); margin: 0 auto; padding: 0 var(--nx-space-5); }
+
+.nx-section          { padding: var(--nx-section-y) 0; }
+.nx-section--sm      { padding: var(--nx-section-y-sm) 0; }
+.nx-section--dark    { background: var(--nx-navy);      color: var(--nx-white); }
+.nx-section--gradient{ background: var(--nx-gradient-dark); color: var(--nx-white); }
+.nx-section--soft    { background: var(--nx-bg-soft); }
+.nx-section--dark .nx-h1,
+.nx-section--dark .nx-h2,
+.nx-section--dark .nx-h3,
+.nx-section--gradient .nx-h1,
+.nx-section--gradient .nx-h2,
+.nx-section--gradient .nx-h3 { color: var(--nx-white); }
+.nx-section--dark .nx-body,
+.nx-section--gradient .nx-body { color: rgba(255, 255, 255, 0.75); }
+
+/* =========================================================================
+   TYPOGRAPHY
+   ========================================================================= */
+.nx-h1 { font-size: var(--nx-text-4xl); font-weight: 800; line-height: 1.1;  letter-spacing: -0.02em; color: var(--nx-navy); margin: 0 0 var(--nx-space-5); }
+.nx-h2 { font-size: var(--nx-text-3xl); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--nx-navy); margin: 0 0 var(--nx-space-4); }
+.nx-h3 { font-size: var(--nx-text-2xl); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; color: var(--nx-navy); margin: 0 0 var(--nx-space-4); }
+.nx-h4 { font-size: var(--nx-text-xl);  font-weight: 700; line-height: 1.35; color: var(--nx-navy); margin: 0 0 var(--nx-space-3); }
+.nx-eyebrow {
+  display: inline-block; font-size: var(--nx-text-xs); font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--nx-blue-mid);
+  margin-bottom: var(--nx-space-3);
+}
+.nx-body    { font-size: var(--nx-text-base); color: var(--nx-text-soft); line-height: 1.7; margin: 0 0 var(--nx-space-4); }
+.nx-body-lg { font-size: var(--nx-text-lg);   color: var(--nx-text-soft); line-height: 1.7; margin: 0 0 var(--nx-space-4); }
+.nx-body-sm { font-size: var(--nx-text-sm);   color: var(--nx-text-soft); line-height: 1.6; margin: 0 0 var(--nx-space-3); }
+
+.nx-accent {
+  background: var(--nx-gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================================
+   BUTTONS
+   ========================================================================= */
+.nx-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--nx-space-2);
+  padding: 14px 28px;
+  font-family: var(--nx-font);
+  font-size: var(--nx-text-sm);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-radius: var(--nx-radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--nx-transition);
+}
+.nx-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+.nx-btn--primary {
+  background: var(--nx-gradient-brand);
+  color: var(--nx-white);
+}
+.nx-btn--primary:hover { transform: translateY(-1px); box-shadow: var(--nx-shadow-glow); }
+
+.nx-btn--secondary {
+  background: var(--nx-blue);
+  color: var(--nx-white);
+}
+.nx-btn--secondary:hover { background: var(--nx-blue-mid); transform: translateY(-1px); }
+
+.nx-btn--ghost {
+  background: transparent;
+  color: var(--nx-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+.nx-btn--ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.55); }
+
+.nx-btn--outline {
+  background: transparent;
+  color: var(--nx-blue);
+  border: 1.5px solid var(--nx-blue);
+}
+.nx-btn--outline:hover { background: var(--nx-blue); color: var(--nx-white); }
+
+.nx-btn--sm { padding: 10px 18px; font-size: var(--nx-text-xs); }
+.nx-btn--lg { padding: 18px 36px; font-size: var(--nx-text-base); }
+
+/* =========================================================================
+   CARDS
+   ========================================================================= */
+.nx-card {
+  background: var(--nx-bg);
+  border-radius: var(--nx-radius);
+  padding: 28px 24px;
+  box-shadow: var(--nx-shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.nx-card--hover {
+  transition: var(--nx-transition-slow);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.nx-card--hover:hover { transform: translateY(-3px); box-shadow: var(--nx-shadow); }
+.nx-card--hover::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--nx-gradient-brand-90);
+  opacity: 0; transition: opacity 0.25s;
+}
+.nx-card--hover:hover::after { opacity: 1; }
+
+.nx-card--elevated {
+  box-shadow: var(--nx-shadow-lg);
+  padding: 40px 36px;
+}
+.nx-card--accent-top {
+  position: relative;
+}
+.nx-card--accent-top::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--nx-gradient-brand-90);
+  border-radius: var(--nx-radius) var(--nx-radius) 0 0;
+}
+
+/* =========================================================================
+   FORMS
+   ========================================================================= */
+.nx-form-group { margin-bottom: var(--nx-space-4); }
+.nx-label {
+  display: block;
+  font-size: var(--nx-text-xs);
+  font-weight: 800;
+  color: var(--nx-text);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.nx-input,
+.nx-select,
+.nx-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #dde2e8;
+  border-radius: var(--nx-radius-sm);
+  font-family: var(--nx-font);
+  font-size: var(--nx-text-base);
+  color: var(--nx-text);
+  background: var(--nx-white);
+  transition: var(--nx-transition);
+}
+.nx-input:focus,
+.nx-select:focus,
+.nx-textarea:focus {
+  outline: none;
+  border-color: var(--nx-blue-mid);
+  box-shadow: 0 0 0 3px rgba(73, 123, 190, 0.15);
+}
+.nx-input::placeholder,
+.nx-textarea::placeholder { color: #b0b8c4; }
+.nx-textarea { min-height: 120px; resize: vertical; }
+
+.nx-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--nx-space-3); }
+@media (max-width: 640px) { .nx-form-row { grid-template-columns: 1fr; } }
+
+.nx-form-help  { font-size: var(--nx-text-xs); color: var(--nx-text-muted); margin-top: 6px; }
+.nx-form-error { font-size: var(--nx-text-xs); color: #DC2626; margin-top: 6px; font-weight: 700; }
+
+/* =========================================================================
+   BADGES & PILLS
+   ========================================================================= */
+.nx-badge {
+  display: inline-block;
+  font-size: var(--nx-text-xs);
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--nx-radius-pill);
+  letter-spacing: 0.5px;
+}
+.nx-badge--brand  { background: linear-gradient(135deg, rgba(76, 186, 112, 0.12), rgba(73, 123, 190, 0.12)); color: var(--nx-blue); }
+.nx-badge--green  { background: rgba(76, 186, 112, 0.1); color: #2D8A4E; }
+.nx-badge--blue   { background: rgba(39, 80, 135, 0.1);  color: var(--nx-blue); }
+.nx-badge--navy   { background: rgba(15, 33, 55, 0.07);  color: var(--nx-navy); }
+.nx-badge--new    {
+  background: var(--nx-gradient-brand);
+  color: var(--nx-white);
+  font-size: 0.65rem;
+  padding: 3px 10px;
+}
+
+/* =========================================================================
+   GRID UTILITIES
+   ========================================================================= */
+.nx-grid     { display: grid; gap: var(--nx-space-5); }
+.nx-grid--2  { grid-template-columns: repeat(2, 1fr); }
+.nx-grid--3  { grid-template-columns: repeat(3, 1fr); }
+.nx-grid--4  { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) {
+  .nx-grid--3, .nx-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .nx-grid--2, .nx-grid--3, .nx-grid--4 { grid-template-columns: 1fr; }
+}
+
+/* =========================================================================
+   STATS (numbers + labels) — common pattern across results/services pages
+   ========================================================================= */
+.nx-stat        { text-align: center; }
+.nx-stat-num    { font-size: var(--nx-text-3xl); font-weight: 800; color: var(--nx-navy); line-height: 1; }
+.nx-stat-num--accent {
+  background: var(--nx-gradient-brand);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.nx-stat-label  { font-size: var(--nx-text-xs); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--nx-text-soft); margin-top: var(--nx-space-2); }
+
+/* =========================================================================
+   DIVIDERS
+   ========================================================================= */
+.nx-divider {
+  height: 1px;
+  background: var(--nx-border);
+  border: none;
+  margin: var(--nx-space-7) 0;
+}
+.nx-divider--gradient {
+  height: 3px;
+  background: var(--nx-gradient-brand-90);
+}
+
+/* =========================================================================
+   RESPONSIVE TYPE SCALING
+   ========================================================================= */
+@media (max-width: 720px) {
+  :root {
+    --nx-text-3xl: 2rem;
+    --nx-text-4xl: 2.5rem;
+    --nx-section-y: 64px;
+  }
+}

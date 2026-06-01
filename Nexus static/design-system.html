@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nexus Brand Group internal design system — tokens, components, and patterns for building new pages.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://nexusbrandgroup.com/design-system">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>Design System | Nexus Brand Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-system.css">
+<style>
+  /* Reference-page-only styles */
+  body { font-family: var(--nx-font); color: var(--nx-text); background: var(--nx-bg-soft); margin: 0; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+
+  .ds-header { background: var(--nx-gradient-dark); color: var(--nx-white); padding: 64px 0 56px; position: relative; overflow: hidden; }
+  .ds-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--nx-gradient-brand-90); }
+  .ds-header h1 { font-size: var(--nx-text-4xl); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; color: #fff; }
+  .ds-header p { color: rgba(255,255,255,0.7); max-width: 640px; margin: 0; font-size: var(--nx-text-lg); line-height: 1.6; }
+  .ds-header .ds-version { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); padding: 4px 12px; border-radius: var(--nx-radius-pill); font-size: var(--nx-text-xs); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
+
+  .ds-toc { background: var(--nx-white); border-bottom: 1px solid var(--nx-border); padding: 16px 0; position: sticky; top: 0; z-index: 10; box-shadow: var(--nx-shadow-sm); }
+  .ds-toc ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 24px; flex-wrap: wrap; font-size: var(--nx-text-sm); font-weight: 700; }
+  .ds-toc a { color: var(--nx-text-soft); text-decoration: none; }
+  .ds-toc a:hover { color: var(--nx-blue); }
+
+  .ds-section { padding: 64px 0; border-bottom: 1px solid var(--nx-border); background: var(--nx-bg-soft); }
+  .ds-section:nth-child(even) { background: var(--nx-white); }
+  .ds-section h2 { font-size: var(--nx-text-2xl); font-weight: 800; color: var(--nx-navy); margin: 0 0 8px; letter-spacing: -0.01em; }
+  .ds-section .ds-section-intro { color: var(--nx-text-soft); margin: 0 0 32px; max-width: 720px; }
+
+  /* Code blocks */
+  .ds-code { background: var(--nx-navy); color: #e5e9f0; padding: 16px 20px; border-radius: var(--nx-radius); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.82rem; line-height: 1.55; overflow-x: auto; margin: 12px 0 0; }
+  .ds-code .c-tag  { color: #ff7eb6; }
+  .ds-code .c-attr { color: #82cfff; }
+  .ds-code .c-str  { color: #b5ddc0; }
+
+  /* Example block layout */
+  .ds-example { background: var(--nx-white); border: 1px solid var(--nx-border); border-radius: var(--nx-radius); padding: 24px; margin-bottom: 16px; }
+  .ds-section:nth-child(even) .ds-example { background: var(--nx-bg-soft); }
+  .ds-example-label { font-size: var(--nx-text-xs); font-weight: 800; color: var(--nx-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+
+  /* Color swatches */
+  .ds-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .ds-swatch { background: var(--nx-white); border-radius: var(--nx-radius); overflow: hidden; box-shadow: var(--nx-shadow-sm); border: 1px solid var(--nx-border); }
+  .ds-swatch .ds-swatch-color { height: 96px; display: flex; align-items: flex-end; padding: 12px; }
+  .ds-swatch .ds-swatch-meta  { padding: 12px; }
+  .ds-swatch .ds-swatch-name  { font-size: var(--nx-text-sm); font-weight: 700; color: var(--nx-navy); margin-bottom: 2px; }
+  .ds-swatch .ds-swatch-token { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--nx-text-soft); }
+  .ds-swatch .ds-swatch-hex   { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--nx-text-muted); }
+
+  /* Type scale display */
+  .ds-type-row { display: flex; align-items: baseline; gap: 24px; padding: 12px 0; border-bottom: 1px dashed var(--nx-border); }
+  .ds-type-row:last-child { border-bottom: 0; }
+  .ds-type-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--nx-text-muted); min-width: 180px; }
+
+  /* Footer */
+  .ds-footer { padding: 48px 0; text-align: center; background: var(--nx-navy); color: rgba(255,255,255,0.6); font-size: var(--nx-text-sm); }
+  .ds-footer a { color: var(--nx-green-light); }
+</style>
+</head>
+<body>
+
+<header class="ds-header">
+  <div class="nx-container">
+    <span class="ds-version">v1.0 · Updated 2026-05-26</span>
+    <h1>Nexus Brand Group <span class="nx-accent">Design System</span></h1>
+    <p>Tokens, components, and layout primitives for building new pages. Everything here ships in one stylesheet — <code style="font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:4px;font-size:0.85em;">design-system.css</code>. Prefix <code style="font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,0.1);padding:2px 8px;border-radius:4px;font-size:0.85em;">nx-</code> guarantees no collision with existing per-page CSS.</p>
+  </div>
+</header>
+
+<nav class="ds-toc">
+  <div class="nx-container">
+    <ul>
+      <li><a href="#using">Using it</a></li>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#cards">Cards</a></li>
+      <li><a href="#forms">Forms</a></li>
+      <li><a href="#badges">Badges</a></li>
+      <li><a href="#layout">Layout</a></li>
+      <li><a href="#patterns">Patterns</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="using" class="ds-section">
+  <div class="nx-container">
+    <h2>Using the design system</h2>
+    <p class="ds-section-intro">Add one stylesheet link to a new page's <code>&lt;head&gt;</code>, then add the <code>nx</code> class to <code>&lt;body&gt;</code> for the base typography reset. Component classes are opt-in — sprinkle them anywhere you want the design-system look.</p>
+    <pre class="ds-code">&lt;<span class="c-tag">link</span> <span class="c-attr">rel</span>=<span class="c-str">"stylesheet"</span> <span class="c-attr">href</span>=<span class="c-str">"/design-system.css"</span>&gt;
+
+&lt;<span class="c-tag">body</span> <span class="c-attr">class</span>=<span class="c-str">"nx"</span>&gt;
+  &lt;<span class="c-tag">section</span> <span class="c-attr">class</span>=<span class="c-str">"nx-section"</span>&gt;
+    &lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-container"</span>&gt;
+      &lt;<span class="c-tag">h1</span> <span class="c-attr">class</span>=<span class="c-str">"nx-h1"</span>&gt;Build <span class="c-str">&lt;</span><span class="c-tag">span</span> <span class="c-attr">class</span>=<span class="c-str">"nx-accent"</span>&gt;something&lt;/<span class="c-tag">span</span>&gt; new&lt;/<span class="c-tag">h1</span>&gt;
+      &lt;<span class="c-tag">p</span> <span class="c-attr">class</span>=<span class="c-str">"nx-body-lg"</span>&gt;Page copy goes here.&lt;/<span class="c-tag">p</span>&gt;
+      &lt;<span class="c-tag">a</span> <span class="c-attr">href</span>=<span class="c-str">"/contact"</span> <span class="c-attr">class</span>=<span class="c-str">"nx-btn nx-btn--primary"</span>&gt;Get Started&lt;/<span class="c-tag">a</span>&gt;
+    &lt;/<span class="c-tag">div</span>&gt;
+  &lt;/<span class="c-tag">section</span>&gt;
+&lt;/<span class="c-tag">body</span>&gt;</pre>
+  </div>
+</section>
+
+<section id="colors" class="ds-section">
+  <div class="nx-container">
+    <h2>Colors</h2>
+    <p class="ds-section-intro">The brand palette is navy + green + blue. Green-to-blue gradients are the signature accent — use them sparingly for emphasis.</p>
+
+    <h3 class="nx-h4" style="margin-top:24px;">Brand</h3>
+    <div class="ds-swatches" style="margin-bottom:32px;">
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#0F2137;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name" style="color:#fff;background:#0F2137;padding:8px;margin:-12px -12px 8px;">Navy</div><div class="ds-swatch-token">--nx-navy</div><div class="ds-swatch-hex">#0F2137</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#00233F;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Navy Deep</div><div class="ds-swatch-token">--nx-navy-deep</div><div class="ds-swatch-hex">#00233F</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#275087;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Blue</div><div class="ds-swatch-token">--nx-blue</div><div class="ds-swatch-hex">#275087</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#497BBE;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Blue Mid</div><div class="ds-swatch-token">--nx-blue-mid</div><div class="ds-swatch-hex">#497BBE</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#79ACF0;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Blue Light</div><div class="ds-swatch-token">--nx-blue-light</div><div class="ds-swatch-hex">#79ACF0</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#4CBA70;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Green</div><div class="ds-swatch-token">--nx-green</div><div class="ds-swatch-hex">#4CBA70</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#6BB884;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Green Mid</div><div class="ds-swatch-token">--nx-green-mid</div><div class="ds-swatch-hex">#6BB884</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#B3E7C4;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Green Light</div><div class="ds-swatch-token">--nx-green-light</div><div class="ds-swatch-hex">#B3E7C4</div></div></div>
+    </div>
+
+    <h3 class="nx-h4" style="margin-top:24px;">Neutrals & UI</h3>
+    <div class="ds-swatches" style="margin-bottom:32px;">
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#1F2937;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Text</div><div class="ds-swatch-token">--nx-text</div><div class="ds-swatch-hex">#1F2937</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#4B5563;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Text Soft</div><div class="ds-swatch-token">--nx-text-soft</div><div class="ds-swatch-hex">#4B5563</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#9aa3ae;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Text Muted</div><div class="ds-swatch-token">--nx-text-muted</div><div class="ds-swatch-hex">#9aa3ae</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#F5F7FA;border:1px solid #E5E7EB;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">BG Soft</div><div class="ds-swatch-token">--nx-bg-soft</div><div class="ds-swatch-hex">#F5F7FA</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#E5E7EB;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Border</div><div class="ds-swatch-token">--nx-border</div><div class="ds-swatch-hex">#E5E7EB</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#FFFFFF;border:1px solid #E5E7EB;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">BG</div><div class="ds-swatch-token">--nx-bg</div><div class="ds-swatch-hex">#FFFFFF</div></div></div>
+    </div>
+
+    <h3 class="nx-h4" style="margin-top:24px;">Marketplace accents</h3>
+    <p class="nx-body-sm">Use only on marketplace-specific UI — never as decorative color elsewhere.</p>
+    <div class="ds-swatches" style="margin-bottom:32px;">
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#FF9900;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Amazon</div><div class="ds-swatch-token">--nx-amazon</div><div class="ds-swatch-hex">#FF9900</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#0071DC;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Walmart</div><div class="ds-swatch-token">--nx-walmart</div><div class="ds-swatch-hex">#0071DC</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#CC0000;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Target</div><div class="ds-swatch-token">--nx-target</div><div class="ds-swatch-hex">#CC0000</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:#000000;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">TikTok</div><div class="ds-swatch-token">--nx-tiktok</div><div class="ds-swatch-hex">#000000</div></div></div>
+    </div>
+
+    <h3 class="nx-h4" style="margin-top:24px;">Gradients</h3>
+    <div class="ds-swatches">
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:var(--nx-gradient-brand);height:96px;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Brand 135°</div><div class="ds-swatch-token">--nx-gradient-brand</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:var(--nx-gradient-brand-90);height:96px;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Brand 90°</div><div class="ds-swatch-token">--nx-gradient-brand-90</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:var(--nx-gradient-dark);height:96px;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Dark</div><div class="ds-swatch-token">--nx-gradient-dark</div></div></div>
+      <div class="ds-swatch"><div class="ds-swatch-color" style="background:var(--nx-gradient-light);height:96px;"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Light</div><div class="ds-swatch-token">--nx-gradient-light</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="typography" class="ds-section">
+  <div class="nx-container">
+    <h2>Typography</h2>
+    <p class="ds-section-intro">Montserrat sets the whole site. Headings are 800-weight with negative letter-spacing for a tight, confident look. Body copy is 1.7 line-height for legibility on long-form pages.</p>
+
+    <div class="ds-example">
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-h1 / 56px / 800</span><h1 class="nx-h1" style="margin:0;">Build trust through performance</h1></div>
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-h2 / 44px / 800</span><h2 class="nx-h2" style="margin:0;">A full-service agency</h2></div>
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-h3 / 32px / 700</span><h3 class="nx-h3" style="margin:0;">Specialized in marketplaces</h3></div>
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-h4 / 24px / 700</span><h4 class="nx-h4" style="margin:0;">Section heading</h4></div>
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-eyebrow / 12px / 800</span><span class="nx-eyebrow" style="margin:0;">Eyebrow label</span></div>
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-body-lg / 18px</span><p class="nx-body-lg" style="margin:0;">Larger body copy for hero subtitles and emphasis.</p></div>
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-body / 16px</span><p class="nx-body" style="margin:0;">Default body copy — used for paragraphs across the site.</p></div>
+      <div class="ds-type-row"><span class="ds-type-meta">.nx-body-sm / 14px</span><p class="nx-body-sm" style="margin:0;">Small body copy for captions, helper text, and footnotes.</p></div>
+    </div>
+
+    <div class="ds-example">
+      <div class="ds-example-label">Gradient accent — wrap any word/phrase in <code>.nx-accent</code></div>
+      <h2 class="nx-h2" style="margin:0;">We build brands on <span class="nx-accent">Amazon &amp; beyond</span></h2>
+    </div>
+  </div>
+</section>
+
+<section id="buttons" class="ds-section">
+  <div class="nx-container">
+    <h2>Buttons</h2>
+    <p class="ds-section-intro">Primary CTA = brand gradient (use once per section, max). Secondary = solid blue. Ghost = on dark backgrounds. Outline = secondary actions on light backgrounds.</p>
+
+    <div class="ds-example">
+      <div class="ds-example-label">Primary CTA</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+        <button class="nx-btn nx-btn--primary">Get Started</button>
+        <button class="nx-btn nx-btn--primary nx-btn--lg">Talk to Sales</button>
+        <button class="nx-btn nx-btn--primary nx-btn--sm">Learn More</button>
+        <button class="nx-btn nx-btn--primary" disabled>Disabled</button>
+      </div>
+      <pre class="ds-code">&lt;<span class="c-tag">button</span> <span class="c-attr">class</span>=<span class="c-str">"nx-btn nx-btn--primary"</span>&gt;Get Started&lt;/<span class="c-tag">button</span>&gt;</pre>
+    </div>
+
+    <div class="ds-example">
+      <div class="ds-example-label">Secondary, outline, ghost</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+        <button class="nx-btn nx-btn--secondary">Secondary</button>
+        <button class="nx-btn nx-btn--outline">Outline</button>
+        <span style="background:var(--nx-navy);padding:14px;border-radius:8px;display:inline-block;"><button class="nx-btn nx-btn--ghost">Ghost on dark</button></span>
+      </div>
+      <pre class="ds-code">&lt;<span class="c-tag">button</span> <span class="c-attr">class</span>=<span class="c-str">"nx-btn nx-btn--secondary"</span>&gt;Secondary&lt;/<span class="c-tag">button</span>&gt;
+&lt;<span class="c-tag">button</span> <span class="c-attr">class</span>=<span class="c-str">"nx-btn nx-btn--outline"</span>&gt;Outline&lt;/<span class="c-tag">button</span>&gt;
+&lt;<span class="c-tag">button</span> <span class="c-attr">class</span>=<span class="c-str">"nx-btn nx-btn--ghost"</span>&gt;Ghost on dark&lt;/<span class="c-tag">button</span>&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<section id="cards" class="ds-section">
+  <div class="nx-container">
+    <h2>Cards</h2>
+    <p class="ds-section-intro">Default card for content blocks. Add <code>nx-card--hover</code> for clickable cards (lifts on hover + gradient bottom-border reveal). Add <code>nx-card--accent-top</code> for emphasis.</p>
+
+    <div class="nx-grid nx-grid--3">
+      <div class="nx-card">
+        <h4 class="nx-h4">Default card</h4>
+        <p class="nx-body-sm">Background, padding, subtle shadow, light border. The neutral container for any boxed content.</p>
+      </div>
+      <div class="nx-card nx-card--hover">
+        <h4 class="nx-h4">Hoverable card</h4>
+        <p class="nx-body-sm">Lifts and reveals a gradient bar on hover. Use for clickable navigation or feature grids.</p>
+      </div>
+      <div class="nx-card nx-card--accent-top">
+        <h4 class="nx-h4">Accent-top card</h4>
+        <p class="nx-body-sm">A 4px gradient bar sits along the top edge. Use for "featured" callouts.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <pre class="ds-code">&lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-card"</span>&gt;...&lt;/<span class="c-tag">div</span>&gt;
+&lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-card nx-card--hover"</span>&gt;...&lt;/<span class="c-tag">div</span>&gt;
+&lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-card nx-card--accent-top"</span>&gt;...&lt;/<span class="c-tag">div</span>&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<section id="forms" class="ds-section">
+  <div class="nx-container">
+    <h2>Forms</h2>
+    <p class="ds-section-intro">Inputs are 1.5px border, blue focus ring. Labels are uppercase and 800-weight to read as system labels, not body copy. Use <code>.nx-form-row</code> for side-by-side fields.</p>
+
+    <div class="ds-example" style="max-width:560px;">
+      <div class="nx-form-row">
+        <div class="nx-form-group">
+          <label class="nx-label" for="ds-first">First Name</label>
+          <input id="ds-first" class="nx-input" type="text" placeholder="John">
+        </div>
+        <div class="nx-form-group">
+          <label class="nx-label" for="ds-last">Last Name</label>
+          <input id="ds-last" class="nx-input" type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="nx-form-group">
+        <label class="nx-label" for="ds-email">Work Email</label>
+        <input id="ds-email" class="nx-input" type="email" placeholder="john@company.com">
+        <div class="nx-form-help">We'll respond within one business day.</div>
+      </div>
+      <div class="nx-form-group">
+        <label class="nx-label" for="ds-mp">Primary Marketplace</label>
+        <select id="ds-mp" class="nx-select">
+          <option>Amazon</option><option>Walmart</option><option>Target</option><option>TikTok Shop</option>
+        </select>
+      </div>
+      <div class="nx-form-group">
+        <label class="nx-label" for="ds-msg">Message</label>
+        <textarea id="ds-msg" class="nx-textarea" placeholder="Tell us about your goals..."></textarea>
+      </div>
+      <button class="nx-btn nx-btn--primary">Submit Inquiry</button>
+    </div>
+
+    <pre class="ds-code">&lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-form-group"</span>&gt;
+  &lt;<span class="c-tag">label</span> <span class="c-attr">class</span>=<span class="c-str">"nx-label"</span> <span class="c-attr">for</span>=<span class="c-str">"email"</span>&gt;Work Email&lt;/<span class="c-tag">label</span>&gt;
+  &lt;<span class="c-tag">input</span> <span class="c-attr">id</span>=<span class="c-str">"email"</span> <span class="c-attr">class</span>=<span class="c-str">"nx-input"</span> <span class="c-attr">type</span>=<span class="c-str">"email"</span>&gt;
+&lt;/<span class="c-tag">div</span>&gt;</pre>
+  </div>
+</section>
+
+<section id="badges" class="ds-section">
+  <div class="nx-container">
+    <h2>Badges</h2>
+    <p class="ds-section-intro">Small label pills for categorization. The "brand" variant uses a soft tint of the green-blue palette; use it for category tags. Use <code>--new</code> sparingly to flag genuinely new content.</p>
+
+    <div class="ds-example">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <span class="nx-badge nx-badge--brand">FEATURED</span>
+        <span class="nx-badge nx-badge--green">ADVERTISING</span>
+        <span class="nx-badge nx-badge--blue">CATALOG</span>
+        <span class="nx-badge nx-badge--navy">STRATEGY</span>
+        <span class="nx-badge nx-badge--new">NEW</span>
+      </div>
+      <pre class="ds-code">&lt;<span class="c-tag">span</span> <span class="c-attr">class</span>=<span class="c-str">"nx-badge nx-badge--brand"</span>&gt;FEATURED&lt;/<span class="c-tag">span</span>&gt;</pre>
+    </div>
+  </div>
+</section>
+
+<section id="layout" class="ds-section">
+  <div class="nx-container">
+    <h2>Layout</h2>
+    <p class="ds-section-intro">All sections wrap their content in <code>.nx-container</code> (max-width 1200px, centered, 24px gutter). For long-form text use <code>.nx-container--narrow</code> (max-width 800px). Sections come in light, soft, dark, and gradient flavors.</p>
+
+    <div class="ds-example">
+      <div class="ds-example-label">2-column grid</div>
+      <div class="nx-grid nx-grid--2">
+        <div class="nx-card"><h4 class="nx-h4">Column A</h4><p class="nx-body-sm">Lorem ipsum.</p></div>
+        <div class="nx-card"><h4 class="nx-h4">Column B</h4><p class="nx-body-sm">Lorem ipsum.</p></div>
+      </div>
+    </div>
+
+    <div class="ds-example">
+      <div class="ds-example-label">3-column grid (collapses to 2 then 1)</div>
+      <div class="nx-grid nx-grid--3">
+        <div class="nx-card"><h4 class="nx-h4">A</h4><p class="nx-body-sm">Lorem.</p></div>
+        <div class="nx-card"><h4 class="nx-h4">B</h4><p class="nx-body-sm">Lorem.</p></div>
+        <div class="nx-card"><h4 class="nx-h4">C</h4><p class="nx-body-sm">Lorem.</p></div>
+      </div>
+    </div>
+
+    <div class="ds-example">
+      <div class="ds-example-label">4-stat row</div>
+      <div class="nx-grid nx-grid--4">
+        <div class="nx-stat"><div class="nx-stat-num nx-stat-num--accent">$3B+</div><div class="nx-stat-label">Revenue Managed</div></div>
+        <div class="nx-stat"><div class="nx-stat-num nx-stat-num--accent">200K+</div><div class="nx-stat-label">SKUs Optimized</div></div>
+        <div class="nx-stat"><div class="nx-stat-num nx-stat-num--accent">11</div><div class="nx-stat-label">Years of Expertise</div></div>
+        <div class="nx-stat"><div class="nx-stat-num nx-stat-num--accent">96%</div><div class="nx-stat-label">Client Retention</div></div>
+      </div>
+    </div>
+
+    <pre class="ds-code">&lt;<span class="c-tag">section</span> <span class="c-attr">class</span>=<span class="c-str">"nx-section"</span>&gt;                     <span style="color:#6c7990;">&lt;!-- 96px top/bottom padding --&gt;</span>
+  &lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-container"</span>&gt;                <span style="color:#6c7990;">&lt;!-- 1200px max --&gt;</span>
+    &lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-grid nx-grid--3"</span>&gt; ... &lt;/<span class="c-tag">div</span>&gt;
+  &lt;/<span class="c-tag">div</span>&gt;
+&lt;/<span class="c-tag">section</span>&gt;
+
+&lt;<span class="c-tag">section</span> <span class="c-attr">class</span>=<span class="c-str">"nx-section nx-section--dark"</span>&gt;  <span style="color:#6c7990;">&lt;!-- navy background --&gt;</span>
+&lt;<span class="c-tag">section</span> <span class="c-attr">class</span>=<span class="c-str">"nx-section nx-section--soft"</span>&gt;  <span style="color:#6c7990;">&lt;!-- F5F7FA bg --&gt;</span></pre>
+  </div>
+</section>
+
+<section id="patterns" class="ds-section nx-section--gradient" style="border-bottom:0;">
+  <div class="nx-container">
+    <h2 style="color:#fff;">Patterns</h2>
+    <p class="ds-section-intro" style="color:rgba(255,255,255,0.7);">A few full-section recipes to copy. Each combines tokens, layout, and components into a finished block.</p>
+
+    <h3 class="nx-h4" style="color:#fff;margin-top:32px;">Hero</h3>
+    <pre class="ds-code">&lt;<span class="c-tag">section</span> <span class="c-attr">class</span>=<span class="c-str">"nx-section nx-section--gradient"</span>&gt;
+  &lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-container--narrow"</span> <span class="c-attr">style</span>=<span class="c-str">"text-align:center;"</span>&gt;
+    &lt;<span class="c-tag">span</span> <span class="c-attr">class</span>=<span class="c-str">"nx-eyebrow"</span>&gt;MARKETPLACE AGENCY&lt;/<span class="c-tag">span</span>&gt;
+    &lt;<span class="c-tag">h1</span> <span class="c-attr">class</span>=<span class="c-str">"nx-h1"</span>&gt;We build brands on <span class="c-str">&lt;</span><span class="c-tag">span</span> <span class="c-attr">class</span>=<span class="c-str">"nx-accent"</span>&gt;Amazon &amp; beyond&lt;/<span class="c-tag">span</span>&gt;&lt;/<span class="c-tag">h1</span>&gt;
+    &lt;<span class="c-tag">p</span> <span class="c-attr">class</span>=<span class="c-str">"nx-body-lg"</span>&gt;Full-service marketplace agency for brands ready to scale.&lt;/<span class="c-tag">p</span>&gt;
+    &lt;<span class="c-tag">a</span> <span class="c-attr">class</span>=<span class="c-str">"nx-btn nx-btn--primary nx-btn--lg"</span> <span class="c-attr">href</span>=<span class="c-str">"/nexus-contact"</span>&gt;Get Started&lt;/<span class="c-tag">a</span>&gt;
+  &lt;/<span class="c-tag">div</span>&gt;
+&lt;/<span class="c-tag">section</span>&gt;</pre>
+
+    <h3 class="nx-h4" style="color:#fff;margin-top:40px;">Feature grid</h3>
+    <pre class="ds-code">&lt;<span class="c-tag">section</span> <span class="c-attr">class</span>=<span class="c-str">"nx-section nx-section--soft"</span>&gt;
+  &lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-container"</span>&gt;
+    &lt;<span class="c-tag">h2</span> <span class="c-attr">class</span>=<span class="c-str">"nx-h2"</span> <span class="c-attr">style</span>=<span class="c-str">"text-align:center;"</span>&gt;What we do&lt;/<span class="c-tag">h2</span>&gt;
+    &lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-grid nx-grid--3"</span> <span class="c-attr">style</span>=<span class="c-str">"margin-top:48px;"</span>&gt;
+      &lt;<span class="c-tag">div</span> <span class="c-attr">class</span>=<span class="c-str">"nx-card nx-card--hover"</span>&gt;
+        &lt;<span class="c-tag">h4</span> <span class="c-attr">class</span>=<span class="c-str">"nx-h4"</span>&gt;Advertising&lt;/<span class="c-tag">h4</span>&gt;
+        &lt;<span class="c-tag">p</span> <span class="c-attr">class</span>=<span class="c-str">"nx-body-sm"</span>&gt;Performance-driven campaigns across all major marketplaces.&lt;/<span class="c-tag">p</span>&gt;
+      &lt;/<span class="c-tag">div</span>&gt;
+      <span style="color:#6c7990;">&lt;!-- repeat... --&gt;</span>
+    &lt;/<span class="c-tag">div</span>&gt;
+  &lt;/<span class="c-tag">div</span>&gt;
+&lt;/<span class="c-tag">section</span>&gt;</pre>
+  </div>
+</section>
+
+<footer class="ds-footer">
+  <div class="nx-container">
+    Internal reference. Not linked from public nav. <br>
+    Stylesheet: <a href="design-system.css">design-system.css</a> · Reference page: <a href="design-system.html">design-system.html</a> · Last updated 2026-05-26
+  </div>
+</footer>
+
+</body>
+</html>
