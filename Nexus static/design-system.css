@@ -41,9 +41,10 @@
   --nx-tiktok:        #000000;
   --nx-tiktok-accent: #EE1D52;
 
-  /* Signature gradients */
-  --nx-gradient-brand:    linear-gradient(135deg, var(--nx-green), var(--nx-blue-mid));
-  --nx-gradient-brand-90: linear-gradient(90deg,  var(--nx-green), var(--nx-blue-mid));
+  /* Signature gradients — 3-stop with green-mid passthrough matches the
+     canonical .form-submit / .nav-cta buttons used across the existing site */
+  --nx-gradient-brand:    linear-gradient(135deg, var(--nx-green) 0%, var(--nx-green-mid) 50%, var(--nx-blue-mid) 100%);
+  --nx-gradient-brand-90: linear-gradient(90deg,  var(--nx-green) 0%, var(--nx-green-mid) 50%, var(--nx-blue-mid) 100%);
   --nx-gradient-dark:     linear-gradient(160deg, var(--nx-navy-deep), var(--nx-navy));
   --nx-gradient-light:    linear-gradient(135deg, var(--nx-green-light), var(--nx-blue-light));
 
@@ -82,7 +83,8 @@
   --nx-shadow:          0 4px 20px rgba(15, 33, 55, 0.10);
   --nx-shadow-lg:       0 8px 40px rgba(0, 0, 0, 0.15);
   --nx-shadow-elevated: 0 12px 48px rgba(15, 33, 55, 0.20);
-  --nx-shadow-glow:     0 6px 20px rgba(76, 186, 112, 0.35);
+  --nx-shadow-glow:     0 4px 24px rgba(76, 186, 112, 0.35);
+  --nx-shadow-glow-lg:  0 8px 36px rgba(76, 186, 112, 0.50);
 
   /* Layout */
   --nx-container-max:    1200px;
@@ -161,48 +163,51 @@
 .nx-btn {
   display: inline-flex; align-items: center; justify-content: center;
   gap: var(--nx-space-2);
-  padding: 14px 28px;
+  padding: 14px 32px;
   font-family: var(--nx-font);
-  font-size: var(--nx-text-sm);
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  border-radius: var(--nx-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: var(--nx-transition);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .nx-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
 
 .nx-btn--primary {
   background: var(--nx-gradient-brand);
   color: var(--nx-white);
+  box-shadow: var(--nx-shadow-glow);
 }
-.nx-btn--primary:hover { transform: translateY(-1px); box-shadow: var(--nx-shadow-glow); }
+.nx-btn--primary:hover { transform: translateY(-2px); box-shadow: var(--nx-shadow-glow-lg); }
 
 .nx-btn--secondary {
   background: var(--nx-blue);
   color: var(--nx-white);
+  box-shadow: 0 4px 16px rgba(39, 80, 135, 0.25);
 }
-.nx-btn--secondary:hover { background: var(--nx-blue-mid); transform: translateY(-1px); }
+.nx-btn--secondary:hover { background: var(--nx-blue-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(39, 80, 135, 0.4); }
 
 .nx-btn--ghost {
   background: transparent;
   color: var(--nx-white);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
 }
-.nx-btn--ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.55); }
+.nx-btn--ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.6); transform: translateY(-2px); }
 
 .nx-btn--outline {
   background: transparent;
   color: var(--nx-blue);
   border: 1.5px solid var(--nx-blue);
 }
-.nx-btn--outline:hover { background: var(--nx-blue); color: var(--nx-white); }
+.nx-btn--outline:hover { background: var(--nx-blue); color: var(--nx-white); transform: translateY(-2px); }
 
-.nx-btn--sm { padding: 10px 18px; font-size: var(--nx-text-xs); }
-.nx-btn--lg { padding: 18px 36px; font-size: var(--nx-text-base); }
+.nx-btn--sm { padding: 10px 22px; font-size: 0.72rem; letter-spacing: 1.2px; }
+.nx-btn--lg { padding: 18px 44px; font-size: 0.9rem; }
 
 /* =========================================================================
    CARDS
