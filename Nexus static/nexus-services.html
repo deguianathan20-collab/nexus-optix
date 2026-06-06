@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <meta name="description" content="Explore Nexus Brand Group's full suite of marketplace services — from Amazon and Walmart to Target and TikTok Shop. Strategy, advertising, catalog management, and more.">
+    <meta name="description" content="Explore Nexus Brand Group's full suite of marketplace services â€” from Amazon and Walmart to Target and TikTok Shop. Strategy, advertising, catalog management, and more.">
     <meta name="keywords" content="Amazon services, marketplace management services, ecommerce agency services, Amazon advertising, catalog management, marketplace strategy">
     <meta name="author" content="Nexus Brand Group">
     <meta name="robots" content="index, follow">
@@ -17,7 +17,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Our Marketplace Services | Nexus Brand Group">
-    <meta property="og:description" content="Explore Nexus Brand Group's full suite of marketplace services — from Amazon and Walmart to Target and TikTok Shop. Strategy, advertising, catalog management, and more.">
+    <meta property="og:description" content="Explore Nexus Brand Group's full suite of marketplace services â€” from Amazon and Walmart to Target and TikTok Shop. Strategy, advertising, catalog management, and more.">
     <meta property="og:url" content="https://nexusbrandgroup.com/nexus-services">
     <meta property="og:site_name" content="Nexus Brand Group">
     <meta property="og:image" content="https://nexusbrandgroup.com/images/nexus-og-image.png">
@@ -27,7 +27,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Our Marketplace Services | Nexus Brand Group">
-    <meta name="twitter:description" content="Explore Nexus Brand Group's full suite of marketplace services — from Amazon and Walmart to Target and TikTok Shop. Strategy, advertising, catalog management, and more.">
+    <meta name="twitter:description" content="Explore Nexus Brand Group's full suite of marketplace services â€” from Amazon and Walmart to Target and TikTok Shop. Strategy, advertising, catalog management, and more.">
     <meta name="twitter:image" content="https://nexusbrandgroup.com/images/nexus-og-image.png">
 
     <!-- Structured Data -->
@@ -101,7 +101,7 @@
                   "name": "What does onboarding with Nexus Brand Group look like?",
                   "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Onboarding includes a comprehensive brand audit, competitive analysis, advertising account review, catalog assessment, and strategy development. We set clear KPIs and growth targets in the first 30 days, with full management takeover within 2–3 weeks."
+                        "text": "Onboarding includes a comprehensive brand audit, competitive analysis, advertising account review, catalog assessment, and strategy development. We set clear KPIs and growth targets in the first 30 days, with full management takeover within 2â€“3 weeks."
                   }
             },
             {
@@ -522,9 +522,27 @@
   .marketplace-card.wide {
     grid-column: span 3;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
     padding: 48px;
+    align-items: center;
+  }
+
+  .marketplace-card.wide .wide-col-intro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .marketplace-card.wide .wide-col-intro .card-desc {
+    margin-bottom: 28px;
+  }
+
+  .marketplace-card.wide .wide-col-services .card-services {
+    margin-bottom: 0;
+  }
+
+  .marketplace-card.wide .wide-col-services .card-services li {
+    padding: 10px 0;
   }
 
   .wide-header {
@@ -555,7 +573,7 @@
 
   @media (max-width: 1024px) {
     .marketplace-grid { grid-template-columns: 1fr; }
-    .marketplace-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+    .marketplace-card.wide { grid-column: span 1; grid-template-columns: 1fr; gap: 24px; padding: 40px; }
   }
 
     /* FAQ Section */
@@ -565,7 +583,7 @@
     .faq-question { padding: 24px 28px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.05rem; color: var(--text-dark); transition: background 0.2s; }
     .faq-question:hover { background: var(--gray-100); }
     .faq-question::after { content: '+'; font-size: 1.4rem; font-weight: 700; color: var(--green-primary); transition: transform 0.3s; flex-shrink: 0; margin-left: 16px; }
-    .faq-item.active .faq-question::after { content: '−'; }
+    .faq-item.active .faq-question::after { content: 'âˆ’'; }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
     .faq-answer-inner { padding: 0 28px 24px; color: var(--text-body); line-height: 1.7; font-size: 0.95rem; }
     .faq-item.active .faq-answer { max-height: 500px; }
@@ -1134,8 +1152,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li class="nav-dropdown">
       <a href="nexus-services.html" class="active">Services</a>
       <ul class="dropdown-menu">
-      <li><a href="nexus-services.html" class="dropdown-active">Overview</a></li>
-      <div class="dropdown-divider"></div>
       <li><a href="nexus-services-amazon.html">Amazon</a></li>
       <li><a href="nexus-services-walmart.html">Walmart</a></li>
       <li><a href="nexus-services-target.html">Target</a></li>
@@ -1145,13 +1161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </li>
     <li><a href="nexus-about.html">About</a></li>
     <li><a href="nexus-results.html">Results</a></li>
-    <li class="nav-dropdown">
-      <a href="nexus-insights-blog.html">Insights</a>
-      <ul class="dropdown-menu">
-      <li><a href="nexus-insights-whitepaper.html">White Papers</a></li>
-      <li><a href="nexus-insights-blog.html">Blog</a></li>
-      </ul>
-    </li>
+
     <li><a href="nexus-optix.html">Optix</a></li>
     <li><a href="nexus-contact.html" class="nav-cta">Get Started</a></li>
   </ul>
@@ -1169,7 +1179,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="mnv3-item">
         <button class="mnv3-toggle" aria-expanded="false" data-sub="mnv3SubServices">Services <span class="mnv3-chevron"></span></button>
         <ul class="mnv3-sub" id="mnv3SubServices">
-          <li><a href="nexus-services.html">Overview</a></li>
           <li><a href="nexus-services-amazon.html">Amazon</a></li>
           <li><a href="nexus-services-walmart.html">Walmart</a></li>
           <li><a href="nexus-services-target.html">Target</a></li>
@@ -1183,13 +1192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="mnv3-item">
         <a href="nexus-results.html" class="mnv3-link">Results</a>
       </li>
-      <li class="mnv3-item">
-        <button class="mnv3-toggle" aria-expanded="false" data-sub="mnv3SubInsights">Insights <span class="mnv3-chevron"></span></button>
-        <ul class="mnv3-sub" id="mnv3SubInsights">
-          <li><a href="nexus-insights-whitepaper.html">White Papers</a></li>
-          <li><a href="nexus-insights-blog.html">Blog</a></li>
-        </ul>
-      </li>
+
       <li class="mnv3-item">
         <a href="nexus-optix.html" class="mnv3-link">Optix</a>
       </li>
@@ -1283,17 +1286,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Other Marketplaces -->
     <a href="nexus-services-other.html" class="marketplace-card wide">
-      <div class="card-icon other"><!-- More marketplaces -->
-        <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.8"/><rect x="21" y="3" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.6"/><rect x="3" y="21" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.6"/><rect x="21" y="21" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.4"/><line x1="25" y1="27" x2="31" y2="27" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="24" x2="28" y2="30" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <h3>Other Marketplaces</h3>
-      <p class="card-desc">If it&#8217;s a marketplace, retail.com, or pure play online retailer&#8212;we can manage it. Expert account management, listing optimization, and advertising across every channel.</p>
-      <ul class="card-services">
-        <li>Zappos &#8212; Premium footwear &amp; fashion marketplace</li>
-        <li>Wayfair &#8212; Home &amp; furniture marketplace management</li>
-        <li>eBay &#8212; Auction and fixed-price marketplace optimization</li>
-        <li>Macy&#8217;s, Instacart, Chewy &amp; more</li>
-      </ul>
-      <span class="card-link">Explore Additional Marketplaces &#8594;</span>
+      <div class="wide-col wide-col-intro">
+        <div class="card-icon other"><!-- More marketplaces -->
+          <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.8"/><rect x="21" y="3" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.6"/><rect x="3" y="21" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.6"/><rect x="21" y="21" width="12" height="12" rx="3" fill="#4CBA70" opacity="0.4"/><line x1="25" y1="27" x2="31" y2="27" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="24" x2="28" y2="30" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Other Marketplaces</h3>
+        <p class="card-desc">If it&#8217;s a marketplace, retail.com, or pure play online retailer&#8212;we can manage it. Expert account management, listing optimization, and advertising across every channel.</p>
+        <span class="card-link">Explore Additional Marketplaces &#8594;</span>
+      </div>
+      <div class="wide-col wide-col-services">
+        <ul class="card-services">
+          <li>Zappos &#8212; Premium footwear &amp; fashion marketplace</li>
+          <li>Wayfair &#8212; Home &amp; furniture marketplace management</li>
+          <li>eBay &#8212; Auction and fixed-price marketplace optimization</li>
+          <li>Macy&#8217;s, Instacart, Chewy &amp; more</li>
+        </ul>
+      </div>
     </a>
   </div>
 </section>
@@ -1325,7 +1332,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-item">
         <div class="faq-question">What does onboarding with Nexus Brand Group look like?</div>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Onboarding includes a comprehensive brand audit, competitive analysis, advertising account review, catalog assessment, and strategy development. We set clear KPIs and growth targets in the first 30 days, with full management takeover within 2–3 weeks.</div>
+          <div class="faq-answer-inner">Onboarding includes a comprehensive brand audit, competitive analysis, advertising account review, catalog assessment, and strategy development. We set clear KPIs and growth targets in the first 30 days, with full management takeover within 2â€“3 weeks.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -1362,13 +1369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="index.html">Home</a></li>
         <li><a href="nexus-about.html">About</a></li>
         <li><a href="nexus-services.html">Services</a></li>
-        <li class="nav-dropdown">
-      <a href="nexus-insights-blog.html">Insights</a>
-      <ul class="dropdown-menu">
-        <li><a href="nexus-insights-whitepaper.html">White Papers</a></li>
-        <li><a href="nexus-insights-blog.html">Blog</a></li>
-      </ul>
-    </li>
+
       </ul>
     </div>
     <div>
