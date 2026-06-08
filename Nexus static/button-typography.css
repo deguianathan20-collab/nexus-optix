@@ -1,0 +1,70 @@
+/*
+ * Button typography normalization
+ * Keeps all action controls aligned with the uppercase navigation style.
+ */
+
+:where(
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  a[class*="btn"],
+  a[class*="button"],
+  a[class*="cta"],
+  a[class*="submit"],
+  a.service-link,
+  a.tool-link,
+  .nav-cta,
+  .form-submit,
+  .cta-button,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-white,
+  .btn-submit,
+  .nav-btn,
+  .filter-tag,
+  .empathy-tab,
+  .nav-item,
+  .nx-btn
+) {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+}
+
+:where(
+  button svg,
+  [role="button"] svg,
+  a[class*="btn"] svg,
+  a[class*="button"] svg,
+  a[class*="cta"] svg,
+  a.service-link svg,
+  .form-submit svg,
+  .cta-button svg,
+  .nx-btn svg
+) {
+  flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+  :where(
+    button,
+    [role="button"],
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"],
+    a[class*="btn"],
+    a[class*="button"],
+    a[class*="cta"],
+    a.service-link,
+    .form-submit,
+    .cta-button,
+    .nx-btn
+  ) {
+    letter-spacing: 0.06em !important;
+  }
+}
