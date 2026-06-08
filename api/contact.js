@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const { getSettings } = require('./_cmsStore');
 
 const SMTP_HOST = 'smtp.gmail.com';
 const SMTP_PORT = 587;
@@ -37,7 +38,10 @@ module.exports = async (req, res) => {
   }
 
   const { SMTP_USER, SMTP_PASS, MAIL_TO, MAIL_FROM } = process.env;
-  if (!SMTP_USER || !SMTP_PASS || !MAIL_TO || !MAIL_FROM) {
+  const settings = await getSettings();
+  const mailTo = settings.forms.recipientEmail || MAIL_TO;
+
+  if (!SMTP_USER || !SMTP_PASS || !mailTo || !MAIL_FROM) {
     console.error('Missing SMTP env vars');
     return res.status(500).json({ success: false, error: 'Mail service not configured' });
   }
@@ -78,7 +82,7 @@ module.exports = async (req, res) => {
 
     await transporter.sendMail({
       from: `Nexus Website <${MAIL_FROM}>`,
-      to: MAIL_TO,
+      to: mailTo,
       replyTo: `${firstName} ${lastName} <${email}>`,
       subject,
       text,

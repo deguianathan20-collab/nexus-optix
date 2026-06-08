@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "forms": {
+    "recipientEmail": ""
+  },
+  "content": {
+    "home.hero.badge": "eCommerce Experts \u2022 Proven Results",
+    "home.hero.line1": "DRIVE GROWTH.",
+    "home.hero.line2": "OWN",
+    "home.hero.subtitle": "White Glove Service. Unmatched Performance. Constant Innovation.",
+    "home.about.title": "Years of Experience and Deep Marketplace Expertise",
+    "home.about.subtitle": "We've managed every dimension of marketplace businesses for hundreds of brands \u2014 from early-stage startups to iconic category leaders \u2014 driving over $3 billion in sales across global marketplaces. Along the way, we've developed creative solutions for nearly every challenge through our expert team and best-in-class technology.",
+    "home.services.title": "We Run Your Marketplace So You Can Run Your Business",
+    "home.services.subtitle": "Every service is designed to solve the challenges that hold brands back \u2014 from reactive partnerships and stalled growth to poor visibility and operational complexity.",
+    "home.cta.title": "Let's Build Your Marketplace Advantage.",
+    "home.cta.subtitle": "Schedule a free strategy session with our team of former Amazon experts and discover untapped growth opportunities.",
+    "contact.hero.title": "Let's Build Your Marketplace Advantage",
+    "contact.hero.subtitle": "Tell us about your brand and goals. Our team of marketplace specialists will craft a custom growth strategy designed to accelerate your results.",
+    "contact.form.title": "Get in Touch",
+    "contact.form.subtitle": "Fill out the form below and a member of our team will reach out within one business day to discuss how we can help grow your marketplace presence."
+  }
+}
