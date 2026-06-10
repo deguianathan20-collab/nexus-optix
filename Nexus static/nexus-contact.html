@@ -237,6 +237,24 @@
   .form-submit:hover {
     transform: translateY(-2px); box-shadow: 0 8px 36px rgba(76, 186, 112, 0.5);
   }
+  .form-actions {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+    margin-top: 8px;
+  }
+  .form-actions .form-submit {
+    margin-top: 0;
+  }
+  .form-consent {
+    max-width: 420px; margin: 0;
+    color: var(--gray-600); font-size: 0.78rem; line-height: 1.6;
+  }
+  .form-consent a {
+    color: var(--blue-primary); font-weight: 600;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .form-consent a:hover {
+    color: var(--green-primary);
+  }
 
   /* TRUST SIDE */
   .trust-side {
@@ -1076,11 +1094,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label for="message">How Can We Help?</label>
         <textarea id="message" name="message" placeholder="Tell us about your brand, current marketplace challenges, and what you&#8217;re looking to achieve..."></textarea>
       </div>
-      <button type="submit" class="form-submit">
-        Submit Inquiry
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-      <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 8px; text-align: center;">By submitting, you agree to our <a href="nexus-privacy-policy.html" style="color: var(--green-light); text-decoration: underline;">Privacy Policy</a>.</p>
+      <div class="form-actions">
+        <button type="submit" class="form-submit">
+          Submit Inquiry
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-consent">By submitting, you agree to our <a href="nexus-privacy-policy.html">Privacy Policy</a>.</p>
+      </div>
     </form>
   </div>
 
