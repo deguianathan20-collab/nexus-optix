@@ -6,7 +6,7 @@
 <meta name="description" content="Privacy policy for Nexus Brand Group - how we collect, use, and protect information from visitors and clients.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://nexusbrandgroup.com/nexus-privacy-policy">
-<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy Policy | Nexus Brand Group">
 <meta property="og:description" content="How Nexus Brand Group collects, uses, and protects information from visitors and clients.">
@@ -33,6 +33,7 @@
     color: var(--text);
     background: var(--bg);
     line-height: 1.7;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
   header.legal-header {
@@ -92,7 +93,14 @@
   main.legal p, main.legal ul, main.legal ol { margin-bottom: 16px; color: var(--text-soft); }
   main.legal ul, main.legal ol { padding-left: 24px; }
   main.legal li { margin-bottom: 8px; }
-  main.legal a { color: var(--blue); }
+  main.legal a {
+    color: var(--blue);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  main.legal div[style*="overflow-x"] {
+    max-width: 100%;
+  }
   main.legal table {
     width: 100%;
     border-collapse: collapse;
@@ -115,6 +123,20 @@
   }
   footer.legal-footer a { color: var(--blue); text-decoration: none; margin: 0 12px; }
   footer.legal-footer a:hover { text-decoration: underline; }
+  @media (max-width: 480px) {
+    header.legal-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+      padding: 18px 20px;
+    }
+    main.legal {
+      padding: 48px 20px 72px;
+    }
+    main.legal table {
+      font-size: 0.82rem;
+    }
+  }
 </style>
 
 <!-- Google Tag Manager -->
@@ -455,7 +477,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <nav aria-label="Resources and legal links">
         <h2>Resources</h2>
         <ul>
-          <li><a href="nexus-tools-portal.html">Brand Tools</a></li>
           <li><a href="nexus-privacy-policy.html">Privacy Policy</a></li>
           <li><a href="nexus-terms-of-service.html">Terms of Service</a></li>
         </ul>
@@ -470,7 +491,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="https://x.com/NexusBrandGroup" target="_blank" rel="noopener noreferrer" aria-label="Follow Nexus Brand Group on X">X</a>
       <a href="https://www.facebook.com/profile.php?id=100066703207945" target="_blank" rel="noopener noreferrer" aria-label="Follow Nexus Brand Group on Facebook">f</a>
       <a href="https://www.linkedin.com/company/nexus-brand-group" target="_blank" rel="noopener noreferrer" aria-label="Follow Nexus Brand Group on LinkedIn">in</a>
-      <a href="https://www.instagram.com/nexusbrandgroup/" target="_blank" rel="noopener noreferrer" aria-label="Follow Nexus Brand Group on Instagram">ig</a>
+      <a href="https://www.instagram.com/nexusbrandgroup/" target="_blank" rel="noopener noreferrer" aria-label="Follow Nexus Brand Group on Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke-width="2"></path><path d="M17.5 6.5h.01" stroke-width="2" stroke-linecap="round"></path></svg></a>
     </nav>
   </div>
 </footer>
